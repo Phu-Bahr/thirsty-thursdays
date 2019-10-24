@@ -4,32 +4,11 @@ import VenueTile from './VenueTile'
 class VenueContainer extends Component {
     constructor(props){
         super(props)
-        this.state = {
-            venues: []
-        }
     }
 
-    componentDidMount() {
-        fetch("/api/v1/venues")
-          .then(response => {
-            if (response.ok) {
-              return response;
-            } else {
-              let errorMessage = `${response.status} (${response.statusText})`,
-                error = new Error(errorMessage);
-              throw error;
-            }
-          })
-          .then(response => response.json())
-          .then(body => {
-            let new_venues = body;
-            this.setState({ venues: new_venues });
-          });
-      }
-
     render(){
-        console.log(this.state.venues);
-        let venueData = this.state.venues
+        console.log("Props in VenuContainer.js", this.props.venues);
+        const venueData = this.props.venues
         let venueList = venueData.map(venue => {
         
             return (
@@ -48,8 +27,7 @@ class VenueContainer extends Component {
         })
         return(
             <div>
-                <div>hello from venue CONTAINER</div>
-                <div>{venueList}</div>
+              <div>{venueList}</div>
             </div>
         )
     }
