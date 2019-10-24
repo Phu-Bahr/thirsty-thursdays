@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import VenueContainer from './VenueContainer'
+import VenueContainer from './Venue/VenueContainer'
 
 class App extends Component {
     render(){
