@@ -4,12 +4,14 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import 'bootstrap/dist/css/bootstrap.css'
 import PropTypes from 'prop-types'
-import App from '../components/App'
+import Home from '../components/Home/Home'
+
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App/>,
+    <Home/>,
     document.body.appendChild(document.createElement('div')),
   )
 })

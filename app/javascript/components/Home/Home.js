@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import VenueContainer from './Venue/VenueContainer'
+import VenueContainer from '../Home/Venue/VenueContainer'
 
-class App extends Component {
+class Home extends Component {
     render(){
         return(
             <VenueContainer/>
@@ -9,4 +9,4 @@ class App extends Component {
     }
 }
 
-export default App
+export default Home
