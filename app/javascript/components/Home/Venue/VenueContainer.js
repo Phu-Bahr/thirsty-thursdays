@@ -12,7 +12,7 @@ class VenueContainer extends Component {
         let venueList = venueData.map(venue => {
         
             return (
-                <VenueTile
+              <VenueTile
                 key={venue.id}
                 name={venue.name}
                 street={venue.street}

@@ -4,16 +4,13 @@ const VenueTile = props => {
     return(
         <div className="container">
             <div className="row">
-                <div className="clearfix">
-                    <div className="col-sm-6">
-                        <img style={{width: '300px', height: '200px'}} src={props.venueImage}/>
-                        <div>{props.name}</div>
-                        <div>{props.street}</div>
-                        <div>{props.city}, {props.state} {props.zip}</div>
-                        <div>{props.telephone}</div>
-                        <div>{props.url}</div>
-                        <br/>
-                    </div>
+                <div className="col-sm-6">
+                    <img style={{width: '300px', height: '200px'}} src={props.venueImage}/>
+                    <div>{props.name}</div>
+                    <div>{props.street}</div>
+                    <div>{props.city}, {props.state} {props.zip}</div>
+                    <div>{props.telephone}</div>
+                    <div>{props.url}</div>
                 </div>
             </div>
         </div>
