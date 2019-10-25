@@ -4,6 +4,7 @@ import VenueTile from './VenueTile'
 class VenueContainer extends Component {
     constructor(props){
         super(props)
+        this.state = {}
     }
 
     render(){
@@ -26,8 +27,10 @@ class VenueContainer extends Component {
             )
         })
         return(
-            <div>
-              <div>{venueList}</div>
+            <div className="container">
+              <div className="row">
+                {venueList}
+              </div>
             </div>
         )
     }

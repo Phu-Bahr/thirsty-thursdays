@@ -32,7 +32,9 @@ class Home extends Component {
         console.log("State from Home.js --", this.state.venues);
         
         return(
-            <VenueContainer venues={this.state.venues}/>
+            <div>
+              <VenueContainer venues={this.state.venues}/>
+            </div>
         )
     }
 }
