@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ .glow-border {
+    -webkit-box-shadow: 0px 0px 30px 10px #565050;
+    -moz-box-shadow: 0px 0px 30px 10px #565050;
+    box-shadow: 0px 0px 30px 10px #565050;
+  }
+
+.border {
+    border: #565050
+}
