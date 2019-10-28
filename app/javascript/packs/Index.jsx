@@ -3,15 +3,18 @@
 // of the page.
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import 'bootstrap/dist/css/bootstrap.css'
+import { render } from 'react-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import $ from 'jquery'
+import Popper from 'popper.js'
+import 'bootstrap/dist/js/bootstrap.bundle.min'
 import PropTypes from 'prop-types'
-import Home from '../components/Home/Home'
+import App from "../components/App"
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Home/>,
+  render(
+    <App />,
     document.body.appendChild(document.createElement('div')),
   )
 })
