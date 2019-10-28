@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- root 'venues#index'
+root 'homepage#index'
 
  namespace :api do
    namespace :v1 do
