@@ -1,24 +1,5 @@
-# README
+Club Promotion website. Main features will include picture uploads and administration rights so I don't have to maintain site. Owners can edit entire site's pictures and texts to their own fruition. If all goes well, adding eCommerce portion to site.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- make sure ruby version is 2.6.5 in .ruby-version and gemfile
+- make sure gemlock bundler is 2.0.1 or it won't load up to heroku at this point until heroku updates their dependencies in the future.
+- bundle install
