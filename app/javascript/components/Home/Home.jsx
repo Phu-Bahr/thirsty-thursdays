@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import VenueContainer from '../Home/Venue/VenueContainer'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
 
@@ -11,7 +12,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        fetch("/api/v1/venues")
+        fetch("/api/v1/venues/index")
           .then(response => {
             if (response.ok) {
               return response;
@@ -25,7 +26,8 @@ class Home extends Component {
           .then(body => {
             let new_venues = body;
             this.setState({ venues: new_venues });
-          });
+          })
+          .catch(() => this.props.history.push("/"))
     }
 
     render(){
@@ -34,6 +36,9 @@ class Home extends Component {
         return(
             <div>
               <VenueContainer venues={this.state.venues}/>
+              <Link to="/new" className="btn btn-link mt-3">
+                Add Venue
+              </Link>
             </div>
         )
     }
