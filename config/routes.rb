@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-root 'homepage#index'
-
- namespace :api do
-   namespace :v1 do
-     resources :venues, only: [:index]
-   end
- end
-
+  
+  namespace :api do
+    namespace :v1 do
+      get 'venues/index'
+      post 'venues/create'
+      delete '/destroy/:id', to: 'venues#destroy'
+    end
+  end
+  root 'homepage#index'
+  get '/*path' => 'homepage#index'
 end
