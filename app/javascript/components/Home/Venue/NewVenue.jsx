@@ -11,7 +11,7 @@ class NewVenue extends React.Component {
             state: "",
             zip: "",
             telephone: "",
-            urls: "",
+            url: "",
             venue_image: ""
         }
 
@@ -27,9 +27,8 @@ class NewVenue extends React.Component {
         event.preventDefault()
         const urls = "/api/v1/venues/create"
         const { name, street, city, state, zip, telephone, url, venue_image } = this.state
-        if (name.length == 0 || street.length == 0 || city.length == 0 || state.length == 0 || zip.length == 0 || telephone.length == 0 || url.length == 0 || venue_image.length == 0)
-            return
-
+        console.log("how long is name??", name.length);
+   
         const body = {
             name,
             street,
@@ -41,6 +40,8 @@ class NewVenue extends React.Component {
             venue_image
         }
 
+        console.log("payload =>>>", body);
+        
         const token = document.querySelector('meta[name="csrf-token"]').content
 
         fetch(urls, {
@@ -57,13 +58,12 @@ class NewVenue extends React.Component {
             }
             throw new Error ("Network response was not ok.")
         })
-        .then(response => this.props.history.push(`/venues/index`))
+        .then(response => this.props.history.push("/"))
         .catch(error => console.log(error.message))
     }
 
     render() {
-        console.log(this.state);
-        
+        console.log("state from newVenue =>>>>",this.state);
         return (
             <div className="container mt-5">
                 <div className="row">
@@ -139,11 +139,11 @@ class NewVenue extends React.Component {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="venueurls">urls</label>
+                                <label htmlFor="venueURL">Url</label>
                                 <input 
                                     type="text"
-                                    name="urls"
-                                    id="venueurls"
+                                    name="url"
+                                    id="venueURL"
                                     className="form-control"
                                     required
                                     onChange={this.onChange}
@@ -163,7 +163,7 @@ class NewVenue extends React.Component {
                             <button type="submit" className="btn custom-button mt-3">
                                 Create Venue
                             </button>
-                            <Link to="/venue/index" className="btn btn-link mt-3">
+                            <Link to="/" className="btn btn-link mt-3">
                                 Back to Home Page
                             </Link>
                         </form>

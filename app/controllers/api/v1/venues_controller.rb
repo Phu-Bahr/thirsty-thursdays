@@ -10,7 +10,7 @@ class Api::V1::VenuesController < ApplicationController
     def create
       venue = Venue.create!(venue_params)
       if venue
-        render json:venue
+        render json: venue
       else
         render json: venue.errors
       end

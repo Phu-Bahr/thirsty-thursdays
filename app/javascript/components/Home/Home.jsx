@@ -36,6 +36,9 @@ class Home extends Component {
         return(
             <div>
               <VenueContainer venues={this.state.venues}/>
+              <Link to="/new" className="btn btn-link mt-3">
+                Add Venue
+              </Link>
             </div>
         )
     }
