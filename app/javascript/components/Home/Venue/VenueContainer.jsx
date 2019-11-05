@@ -1,71 +1,95 @@
 import React, { Component } from 'react'
 import VenueTile from './VenueTile'
-import { Route, withRouter } from "react-router-dom"
 
 class VenueContainer extends Component {
-    constructor(props){
-        super(props)
-        this.state = { }
+  constructor(props){
+      super(props)
+      this.state = { 
+        venues: [],
+        refreshKey: 0
+      }
+      this.deleteVenue = this.deleteVenue.bind(this)
+  }
 
-        this.deleteVenue = this.deleteVenue.bind(this)
-    }
-
-    deleteVenue(id) {
-      
-      const urls = `/api/v1/destroy/${id}`
-      const token = document.querySelector('meta[name="csrf-token"]').content
-
-      fetch(urls, {
-        method: "DELETE",
-        headers: {
-          "X-CSRF-Token": token,
-          "Content-Type": "application/json"
-        }
-      })
-      .then (response => {
+  componentDidMount() {
+    fetch("/api/v1/venues/index")
+      .then(response => {
         if (response.ok) {
-          return response.json()
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
         }
-        throw new Error("Network response was not ok.")
       })
-      .then(() => this.props.history.push("/"))
-      .catch(error => console.log(error.message))
-    }
-    
-    render(){              
-      const venueData = this.props.venues
-      let venueList = venueData.map(venue => {
+      .then(response => response.json())
+      .then(body => {
+        let new_venues = body;
+        this.setState({ venues: new_venues });
+      })
+      .catch(() => this.props.history.push("/"))
+  }
 
-        let handleClick = () => {
-          this.deleteVenue(venue.id)
-        }
-        
-            return (
-              <VenueTile
-                key={venue.id}
-                id={venue.id}
-                name={venue.name}
-                street={venue.street}
-                city={venue.city}
-                state={venue.state}
-                zip={venue.zip}
-                telephone={venue.telephone}
-                url={venue.url}
-                venueImage={venue.venue_image}
-                handleClick={handleClick}
-              />
-            )
-        })
+  deleteVenue(id) {
+    const urls = `/api/v1/destroy/${id}`
+    const token = document.querySelector('meta[name="csrf-token"]').content
+    fetch(urls, {
+      method: "DELETE",
+      headers: {
+        "X-CSRF-Token": token,
+        "Content-Type": "application/json"
+      }
+    })
+    .then (response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+          throw error
+      }
+    })
+    .then(this.setState({ venues: [] }))
+    .then(body => {
+      console.log(body);
+    })
+    .catch(error => console.log(error.message))
+  }
     
-        return(
-          
-            <div className="container">
-              <div className="row">
-                {venueList}
-              </div>
-            </div>
-        )
-    }
+  render(){             
+    const venueData = this.state.venues
+    let venueList = venueData.map(venue => {
+
+      let handleClick = () => {
+        this.deleteVenue(venue.id)
+        console.log("delete button clicked");
+      }
+  
+      return (
+        <VenueTile
+          key={venue.id}
+          id={venue.id}
+          name={venue.name}
+          street={venue.street}
+          city={venue.city}
+          state={venue.state}
+          zip={venue.zip}
+          telephone={venue.telephone}
+          url={venue.url}
+          venueImage={venue.venue_image}
+          handleClick={handleClick}
+        />
+      )
+    })
+  
+    return(
+      <div className="container">
+        <div className="row">
+          {venueList}
+        </div>
+      </div>
+    )
+  }
 }
 
 export default VenueContainer
