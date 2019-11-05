@@ -6,7 +6,7 @@ class VenueContainer extends Component {
       super(props)
       this.state = { 
         venues: [],
-        refreshKey: 0
+        refreshKey: false
       }
       this.deleteVenue = this.deleteVenue.bind(this)
   }
@@ -49,11 +49,12 @@ class VenueContainer extends Component {
           throw error
       }
     })
+    .then (this.setState ({ refreshKey: true }))
     .catch(error => console.log(error.message))
   }
 
   componentDidUpdate() {
-    if (this.state.venues !== []) {
+    if (this.state.refreshKey === true) {
       fetch("/api/v1/venues/index")
         .then(response => {
           if (response.ok) {
@@ -69,6 +70,7 @@ class VenueContainer extends Component {
           let new_venues = body;
           this.setState({ venues: new_venues });
         })
+        .then(this.setState ({ refreshKey : false }))
     }
   }
     
