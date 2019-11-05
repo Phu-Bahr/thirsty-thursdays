@@ -27,7 +27,6 @@ class NewVenue extends React.Component {
         event.preventDefault()
         const urls = "/api/v1/venues/create"
         const { name, street, city, state, zip, telephone, url, venue_image } = this.state
-        console.log("how long is name??", name.length);
    
         const body = {
             name,
@@ -39,8 +38,6 @@ class NewVenue extends React.Component {
             url,
             venue_image
         }
-
-        console.log("payload =>>>", body);
         
         const token = document.querySelector('meta[name="csrf-token"]').content
 
@@ -63,7 +60,6 @@ class NewVenue extends React.Component {
     }
 
     render() {
-        console.log("state from newVenue =>>>>",this.state);
         return (
             <div className="container mt-5">
                 <div className="row">
