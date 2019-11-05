@@ -4,17 +4,20 @@ import VenueTile from './VenueTile'
 class VenueContainer extends Component {
     constructor(props){
         super(props)
-        this.state = {}
+        this.state = { }
+      
     }
 
-    render(){
-        console.log("Props in VenuContainer.js", this.props.venues);
-        const venueData = this.props.venues
-        let venueList = venueData.map(venue => {
+
+    
+    render(){        
+      const venueData = this.props.venues
+      let venueList = venueData.map(venue => {
         
             return (
               <VenueTile
                 key={venue.id}
+                id={venue.id}
                 name={venue.name}
                 street={venue.street}
                 city={venue.city}
@@ -26,7 +29,9 @@ class VenueContainer extends Component {
               />
             )
         })
+    
         return(
+          
             <div className="container">
               <div className="row">
                 {venueList}
