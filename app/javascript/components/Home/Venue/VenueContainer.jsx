@@ -49,11 +49,27 @@ class VenueContainer extends Component {
           throw error
       }
     })
-    .then(this.setState({ venues: [] }))
-    .then(body => {
-      console.log(body);
-    })
     .catch(error => console.log(error.message))
+  }
+
+  componentDidUpdate() {
+    if (this.state.venues !== []) {
+      fetch("/api/v1/venues/index")
+        .then(response => {
+          if (response.ok) {
+            return response;
+          } else {
+            let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+            throw error;
+          }
+        })
+        .then(response => response.json())
+        .then(body => {
+          let new_venues = body;
+          this.setState({ venues: new_venues });
+        })
+    }
   }
     
   render(){             
