@@ -12,6 +12,7 @@ import PropTypes from 'prop-types'
 import App from "../components/App"
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
   render(
     <App />,
