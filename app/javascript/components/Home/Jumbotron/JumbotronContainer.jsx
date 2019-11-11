@@ -28,7 +28,7 @@ class JumbotronContainer extends Component {
                  <div className="card card-image" style={{backgroundColor: "Black"}}>
                     <div className="py-5">
                       <div>
-                      <Particles className="particles" params={particleOpt} />
+                      <Particles className="particles overlay" params={particleOpt} />
                       </div>
                         <div className="jumbolayer">
                           <h5 className="h5 orange-text">Lets git Lit!</h5>
