@@ -14,6 +14,10 @@
  *= require_self
  */
 
+body {
+  background: linear-gradient(to right, rgb(203,52,181), rgb(68,166,187))
+}
+
  .glow-border {
     -webkit-box-shadow: 0px 0px 30px 10px #565050;
     -moz-box-shadow: 0px 0px 30px 10px #565050;
@@ -58,12 +62,10 @@
 .overlay {
   height: 100%;
   width: 100%;
-  opacity: 0.4;
+  opacity: .8;
+  z-index: 0;
 }
 
-body {
-  background: linear-gradient(to right, rgb(203,52,181), rgb(68,166,187))
-}
 
 
 .particles {
@@ -72,9 +74,4 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 0;
-}
-
-.jumbolayer {
-  z-index: 1;
 }
