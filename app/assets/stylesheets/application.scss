@@ -59,14 +59,16 @@ body {
   height: 100%;
   width: 100%;
 }
-.overlay {
+.overlayButton {
+  z-index: 2;
+}
+
+.overlayParticle {
   height: 100%;
   width: 100%;
   opacity: .8;
   z-index: 0;
 }
-
-
 
 .particles {
   position: absolute;
@@ -74,4 +76,8 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.overlayBase {
+  z-index: -2;
 }
