@@ -23,11 +23,21 @@ class JumbotronContainer extends Component {
             line1: "",
             line2: "",
             line3: "",
-            refreshKey: false
+            refreshKey: false,
+            hideDiv: true
         }
 
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+        this.clickEdit = this.clickEdit.bind(this)
+    }
+
+    clickEdit(event) {
+      if (this.state.hideDiv === false) {
+        this.setState ({ hideDiv: true })
+      } else {
+      this.setState ({ hideDiv : false})
+      }
     }
 
     onChange(event) {
@@ -113,7 +123,15 @@ class JumbotronContainer extends Component {
           this.setState ({ refreshKey: false })
         }
 
-        console.log(this.state.jumboData)
+        let hide
+        if (this.state.hideDiv === true) {
+          hide = "invisible"
+        } else {
+          hide = ""
+        }
+
+
+        console.log(this.state.hideDiv)
         const jumboData = this.state.jumboData
         let jumoblist = jumboData.map(element => {
 
@@ -139,8 +157,15 @@ class JumbotronContainer extends Component {
                   <div>
                     {jumoblist}
                   </div>
-
-                  <div className="container mt-5">
+                  <div className="col-sm-12">
+                    <button className="btn btn-primary">More about us!</button>
+                  </div>
+                  <div className="col-sm-12 mt-5">
+                    <button type="button" className="btn btn-info" onClick={this.clickEdit}>Edit</button>
+                  </div>
+                
+                  
+                  <div className={"container mt-5" + " " + hide}>
                     <div className="row">
                       <div className="col-sm-12 col-lg-6 offset-lg-3">
                         <p className="font-weight-normal mb-5">

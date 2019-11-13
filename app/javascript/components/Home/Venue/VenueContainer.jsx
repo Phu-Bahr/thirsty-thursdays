@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import VenueTile from './VenueTile'
+import { Link } from 'react-router-dom'
 
 class VenueContainer extends Component {
   constructor(props){
@@ -102,9 +103,18 @@ class VenueContainer extends Component {
     })
   
     return(
-      <div className="container">
-        <div className="row">
-          {venueList}
+      <div>
+        <div className="container">
+          <div className="col text-center">
+            <Link to="/newVenue">
+              <button type="button" className="btn-info mb-3">
+              Add new venue
+              </button>
+            </Link>
+          </div>
+          <div className="row">
+            {venueList}
+          </div>
         </div>
       </div>
     )

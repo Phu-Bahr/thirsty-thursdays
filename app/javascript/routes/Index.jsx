@@ -7,7 +7,7 @@ export default (
     <Router>
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/new" exact component={NewVenue} />
+            <Route path="/newVenue" exact component={NewVenue} />
         </Switch>
     </Router>
 )
