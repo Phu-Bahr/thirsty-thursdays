@@ -75,6 +75,7 @@ class VenueContainer extends Component {
   }
     
   render(){             
+    
     const venueData = this.state.venues
     let venueList = venueData.map(venue => {
 
