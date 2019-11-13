@@ -1,4 +1,4 @@
-# Venue.delete_all
+Venue.delete_all
 
 venues = Venue.create!([
     { name: 'Jame\'s Cool Bar', street: '21 Jump', city: 'Boston', state: 'MA', zip: '02111', telephone: '555-555-5555', url: 'www.google.com', venue_image: 'https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&w=1000&q=80'},
@@ -9,5 +9,3 @@ venues = Venue.create!([
     { name: 'Paul\'s Cool Club', street: '22 Jump', city: 'Boston', state: 'MA', zip: '02111', telephone: '555-555-5555', url: 'www.amazon.com', venue_image: 'https://www.vets4pets.com/siteassets/species/cat/kitten/tiny-kitten-in-field.jpg?width=1040'},
     { name: 'John\'s Cool House', street: '23 Jump', city: 'Boston', state: 'MA', zip: '02111', telephone: '555-555-5555', url: 'www.yahoo.com', venue_image: 'https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/video/caring_for_your_kitten_video/650x350_caring_for_your_kitten_video.jpg'}    
 ])
-
-jumbotron = Jumbotron.create!(line1: 'Time to drink!', line2: 'WonderBar Projections Inc', line3: 'Come party with the homies!')
