@@ -7,6 +7,14 @@ Rails.application.routes.draw do
       delete '/destroy/:id', to: 'venues#destroy'
     end
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :jumbotrons, only: [:index, :update]
+    end
+  end
+
+
   root 'homepage#index'
   get '/*path' => 'homepage#index'
 end

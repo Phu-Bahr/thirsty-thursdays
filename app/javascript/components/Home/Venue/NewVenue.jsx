@@ -126,7 +126,7 @@ class NewVenue extends React.Component {
                             <div className="form-group">
                                 <label htmlFor="venueTelephone">Telephone</label>
                                 <input 
-                                    type="text"
+                                    type="tel"
                                     name="telephone"
                                     id="venueTelephone"
                                     className="form-control"
@@ -146,7 +146,7 @@ class NewVenue extends React.Component {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="venueImage">Venue Image</label>
+                                <label htmlFor="venueImage">Venue Image Link</label>
                                 <input 
                                     type="text"
                                     name="venue_image"

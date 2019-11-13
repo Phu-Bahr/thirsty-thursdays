@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Particles from 'react-particles-js'
+import { Link } from "react-router-dom"
+import JumboTile from "./JumboTile"
 
 const particleOpt = {
     particles: {
@@ -16,26 +18,116 @@ const particleOpt = {
 class JumbotronContainer extends Component {
     constructor(props){
         super(props)
-        this.state = { 
+        this.state = {
+            jumboData: [],
             line1: "",
             line2: "",
-            line3: ""
+            line3: "",
+            refreshKey: false
         }
 
         this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
     }
 
     onChange(event) {
       this.setState({ [event.target.name]: event.target.value })
     }
 
+    componentDidMount() {
+      fetch("/api/v1/jumbotrons")
+      .then(response => {
+        if (response.ok) {
+          return response
+        } else {
+          let errorMessage = `${response.status} (${response.statuseText})`,
+            error = new Error(errorMessage)
+          throw error
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        let new_jumboData = body
+        this.setState ({ jumboData: new_jumboData })
+      })
+      .catch(error => console.log(error.message))
+    }
+
     onSubmit(event) {
-      console.log("i just got submitted"); 
+      event.preventDefault()
+      const urls = "/api/v1/jumbotrons/1"
+      const { line1, line2, line3 } = this.state
+
+      const body = {
+        line1, line2, line3
+      }
+      console.log("fetch body =>", body);
+      
+      const token = document.querySelector('meta[name="csrf-token"]').content
+
+      fetch(urls, {
+        method: "PUT",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      })
+      .then (response => {
+        if (response.ok) {
+          return response
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage)
+            throw error
+        }
+      })
+      .then(this.setState({ refreshKey: true }))
+      .catch(error => console.log(error.message)
+      )
+    }
+
+    componentDidUpdate() {
+      if (this.state.refreshKey === true) {
+        fetch("/api/v1/jumbotrons")
+        .then(response => {
+          if (response.ok) {
+            return response
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage)
+          throw error
+          }
+        })
+        .then(response => response.json())
+        .then(body => {
+          let new_jumbo = body
+          this.setState({ jumboData: new_jumbo})
+        })
+        .then(this.setState ({ refreshKey: false}))
+      }
     }
 
     render() {
-      console.log(this.state);
-      
+        if (this.state.refreshKey === true) {
+          this.setState ({ refreshKey: false })
+        }
+
+        console.log(this.state.jumboData)
+        const jumboData = this.state.jumboData
+        let jumoblist = jumboData.map(element => {
+
+          return(
+            <JumboTile 
+              key={element.id}
+              id={element.id}
+              line1={element.line1}
+              line2={element.line2}
+              line3={element.line3}
+            />
+          )
+        })
+        
         return (
           <div>
             <div className="text-white text-center rgba-stylish-strong py-5">
@@ -45,10 +137,7 @@ class JumbotronContainer extends Component {
                     <Particles className="particles overlayParticle" params={particleOpt} />
                   </div>
                   <div>
-                    <h5 className="h5 orange-text">Lets git Lit!</h5>
-                    <h2 className="card-title h2 my-4 py-2">WonderBar Productions</h2>
-                    <p className="mb-4 pb-2 px-md-5 mx-md-5">Come party with the best!</p>
-                    <button className="btn btn-primary overlayButtoin">More about us!</button>
+                    {jumoblist}
                   </div>
 
                   <div className="container mt-5">
@@ -80,7 +169,7 @@ class JumbotronContainer extends Component {
                           </div>
                           <div className="form-group">
                               <input
-                                type="text"
+                                type="textarea"
                                 name="line3"
                                 id="line3"
                                 className="form-control"
@@ -95,10 +184,6 @@ class JumbotronContainer extends Component {
                       </div>
                     </div>
                   </div>
-
-
-
-
 
                 </div>
               </div>
