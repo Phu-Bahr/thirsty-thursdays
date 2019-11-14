@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import VenueContainer from '../Home/Venue/VenueContainer'
 import JumbotronContainer from '../Home/Jumbotron/JumbotronContainer'
+import NavbarContainer from '../Home/Navbar/NavbarContainer'
 
 class Home extends Component {
 
@@ -12,8 +13,9 @@ class Home extends Component {
     render(){
         return(
             <div>
-              <JumbotronContainer />
-              <VenueContainer />
+                <NavbarContainer />
+                <JumbotronContainer />
+                <VenueContainer />
             </div>
         )
     }

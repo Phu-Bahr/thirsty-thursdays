@@ -15,7 +15,7 @@
  */
 
 body {
-  background: linear-gradient(to right, rgb(203,52,181), rgb(68,166,187))
+  background: linear-gradient(to right, rgb(255, 255, 255), rgb(1, 66, 79))
 }
 
  .glow-border {
@@ -84,4 +84,72 @@ body {
 
 .invisible {
   display: none;
+}
+
+// NAV BAR CSS
+
+.site-header {
+  background-color: whitesmoke;
+  padding: 20px 10px;
+  opacity: .9;
+}
+
+.site-header a {
+  color: #999;
+  transition: ease-in-out color 0.3s;
+}
+
+.header-nav-item {
+  font-size: 16px;
+  font-weight: 300;
+  padding: 8px;
+  cursor: pointer;
+  position: relative;
+}
+
+.navbar-underline:link {
+  text-decoration: none;
+}
+
+.navbar-underline:hover,
+.navbar-underline:focus,
+.navbar-underline:active {
+  color: #999;
+  text-decoration: none;
+}
+.navbar-underline {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-decoration: none;
+  transition: color 0.1s, background-color 0.1s;
+}
+.navbar-underline {
+  position: relative;
+  display: block;
+  padding: 16px 0;
+  margin: auto;
+  letter-spacing: 1px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: color 0.1s, background-color 0.1s, padding 0.2s ease-in;
+}
+.navbar-underline::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: darkgrey;
+  transform-origin: right top;
+  transform: scale(0, 1);
+  transition: color 0.1s, transform 0.2s ease-out;
+}
+
+.navbar-underline:hover::before,
+.navbar-underline:focus::before {
+  transform-origin: left top;
+  transform: scale(1, 1);
 }
