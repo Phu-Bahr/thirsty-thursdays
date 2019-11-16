@@ -10,7 +10,7 @@ class NavbarContainer extends Component {
 
     render(){
         return(
-            <nav className="navbar navbar-expand-lg navbar-light site-header sticky-top">
+            <nav className="navbar navbar-expand-lg navbar-light site-header sticky-top py-4">
                 <div className="container">
                     <div className="mx-auto order-0">
                         <Link to="/newVenue" className="navbar-brand navbar-underline" href="/newVenue">

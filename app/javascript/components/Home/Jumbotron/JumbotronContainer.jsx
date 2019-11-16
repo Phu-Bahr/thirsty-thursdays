@@ -2,154 +2,234 @@ import React, { Component } from 'react'
 import Particles from 'react-particles-js'
 import { Link } from "react-router-dom"
 import JumboTile from "./JumboTile"
+import * as Constants from '../../Constants/Index'
 
 const particleOpt = {
-    particles: {
-      number: {
-        value: 150,
-        density: {
-          enabled: true,
-          value_area: 800
-        }
+  particles:{
+    number:{
+      value:120,
+      density:{
+        enable:true,
+        value_area:800}
+    },
+    shape:{
+      stroke:{
+        width:0
+      },
+      polygon:{
+        nb_sides:5
+      }
+    },
+    opacity:{
+      value:.4,
+      random:false,
+      anim:{
+        enable:false,
+        speed:1,
+        opacity_min:0.1,
+        sync:false
+      }
+    },
+    size:{
+      value:3,
+      random:true,
+      anim:{
+        enable:false,
+        speed:40,
+        size_min:0.1,
+        sync:false
+      }
+    },
+    line_linked:{
+      enable:true,
+      distance:70,
+      opacity:0.4,
+      width:1
+    },
+    move:{
+      enable:true,
+      speed:6,
+      random:false,
+      straight:false,
+      bounce:false,
+      attract:{
+        enable:false,
+        rotateX:600,
+        rotateY:1200
+      }
+    }
+  },
+  interactivity:{
+    events:{
+      onhover:{
+        enable:true
+      },
+      onclick:{
+        enable:true,
+      },
+      resize:true
+    },
+  modes:{
+    grab:{
+      distance:400,
+      line_linked:{
+        opacity:1
+      }
+    },
+    bubble:{
+      distance:400,
+      size:40,
+      duration:2,
+      opacity:8,
+      speed:3},
+      repulse:{
+        distance:150,
+        duration:0.4},
+        push:{
+          particles_nb:4
+        },
+      remove:{
+        particles_nb:2
       }
     }
   }
+}
 
 class JumbotronContainer extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            jumboData: [],
-            line1: "",
-            line2: "",
-            line3: "",
-            refreshKey: false,
-            hideDiv: true
-        }
-
-        this.onChange = this.onChange.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
-        this.clickEdit = this.clickEdit.bind(this)
+  constructor(props){
+    super(props)
+    this.state = {
+      jumboData: [],
+      line1: "",
+      line2: "",
+      line3: "",
+      refreshKey: false,
+      hideDiv: true
     }
-
-    clickEdit(event) {
-      if (this.state.hideDiv === false) {
-        this.setState ({ hideDiv: true })
-      } else {
+    
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    this.clickEdit = this.clickEdit.bind(this)
+  }
+  
+  clickEdit(event) {
+    if (this.state.hideDiv === false) {
+      this.setState ({ hideDiv: true })
+    } else {
       this.setState ({ hideDiv : false})
+    }
+  }
+  
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+  
+  componentDidMount() {
+    fetch("/api/v1/jumbotrons")
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statuseText})`,
+        error = new Error(errorMessage)
+        throw error
       }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let new_jumboData = body
+      this.setState ({ jumboData: new_jumboData })
+    })
+    .catch(error => console.log(error.message))
+  }
+  
+  onSubmit(event) {
+    event.preventDefault()
+    const urls = "/api/v1/jumbotrons/1"
+    const { line1, line2, line3 } = this.state
+    
+    const body = {
+      line1, line2, line3
     }
-
-    onChange(event) {
-      this.setState({ [event.target.name]: event.target.value })
-    }
-
-    componentDidMount() {
+    console.log("fetch body =>", body);
+    
+    const token = document.querySelector('meta[name="csrf-token"]').content
+    
+    fetch(urls, {
+      method: "PUT",
+      headers: {
+        "X-CSRF-Token": token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    })
+    .then (response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(this.setState({ refreshKey: true }))
+    .catch(error => console.log(error.message)
+    )
+  }
+  
+  componentDidUpdate() {
+    if (this.state.refreshKey === true) {
       fetch("/api/v1/jumbotrons")
       .then(response => {
         if (response.ok) {
           return response
         } else {
-          let errorMessage = `${response.status} (${response.statuseText})`,
-            error = new Error(errorMessage)
+          let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
           throw error
         }
       })
       .then(response => response.json())
       .then(body => {
-        let new_jumboData = body
-        this.setState ({ jumboData: new_jumboData })
+        let new_jumbo = body
+        this.setState({ jumboData: new_jumbo})
       })
-      .catch(error => console.log(error.message))
+      .then(this.setState ({ refreshKey: false}))
     }
-
-    onSubmit(event) {
-      event.preventDefault()
-      const urls = "/api/v1/jumbotrons/1"
-      const { line1, line2, line3 } = this.state
-
-      const body = {
-        line1, line2, line3
-      }
-      console.log("fetch body =>", body);
+  }
+  
+  render() {
+    if (this.state.refreshKey === true) {
+      this.setState ({ refreshKey: false })
+    }
+    
+    let hide
+    if (this.state.hideDiv === true) {
+      hide = "invisible"
+    } else {
+      hide = ""
+    }
+    
+    
+    console.log(this.state.hideDiv)
+    const jumboData = this.state.jumboData
+    let jumoblist = jumboData.map(element => {
       
-      const token = document.querySelector('meta[name="csrf-token"]').content
-
-      fetch(urls, {
-        method: "PUT",
-        headers: {
-          "X-CSRF-Token": token,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(body)
+      return(
+        <JumboTile 
+        key={element.id}
+        id={element.id}
+        line1={element.line1}
+        line2={element.line2}
+        line3={element.line3}
+        />
+        )
       })
-      .then (response => {
-        if (response.ok) {
-          return response
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage)
-            throw error
-        }
-      })
-      .then(this.setState({ refreshKey: true }))
-      .catch(error => console.log(error.message)
-      )
-    }
-
-    componentDidUpdate() {
-      if (this.state.refreshKey === true) {
-        fetch("/api/v1/jumbotrons")
-        .then(response => {
-          if (response.ok) {
-            return response
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage)
-          throw error
-          }
-        })
-        .then(response => response.json())
-        .then(body => {
-          let new_jumbo = body
-          this.setState({ jumboData: new_jumbo})
-        })
-        .then(this.setState ({ refreshKey: false}))
-      }
-    }
-
-    render() {
-        if (this.state.refreshKey === true) {
-          this.setState ({ refreshKey: false })
-        }
-
-        let hide
-        if (this.state.hideDiv === true) {
-          hide = "invisible"
-        } else {
-          hide = ""
-        }
-
-
-        console.log(this.state.hideDiv)
-        const jumboData = this.state.jumboData
-        let jumoblist = jumboData.map(element => {
-
-          return(
-            <JumboTile 
-              key={element.id}
-              id={element.id}
-              line1={element.line1}
-              line2={element.line2}
-              line3={element.line3}
-            />
-          )
-        })
-        
-        return (
-          <div>
-            <div className="text-white text-center rgba-stylish-strong py-5">
-              <div className="card card-image" style={{backgroundColor: "Black"}}>
+      
+      return (
+        <div>
+            <div className="text-white text-center rgba-stylish-strong">
+              <div className="card card-image py-5" style={{backgroundColor: "Black"}}>
                 <div className="py-5">
                   <div>
                     <Particles className="particles overlayParticle" params={particleOpt} />

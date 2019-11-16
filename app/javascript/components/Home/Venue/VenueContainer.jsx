@@ -104,16 +104,18 @@ class VenueContainer extends Component {
   
     return(
       <div>
-        <div className="container">
-          <div className="col text-center">
-            <Link to="/newVenue">
-              <button type="button" className="btn-info mb-3">
-              Add new venue
-              </button>
-            </Link>
-          </div>
-          <div className="row">
-            {venueList}
+        <div className="py-5">
+          <div className="container">
+            <div className="col text-center">
+              <Link to="/newVenue">
+                <button type="button" className="btn-info mb-3">
+                Add new venue
+                </button>
+              </Link>
+            </div>
+            <div className="row">
+              {venueList}
+            </div>
           </div>
         </div>
       </div>
