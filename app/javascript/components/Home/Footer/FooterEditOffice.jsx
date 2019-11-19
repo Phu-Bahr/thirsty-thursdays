@@ -1,7 +1,6 @@
 import React from "react"
 
 const FooterEditOffice = props => {
-    console.log(props);
     
     return (
         <div>

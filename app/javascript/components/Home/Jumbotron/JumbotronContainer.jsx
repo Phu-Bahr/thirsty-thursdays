@@ -152,7 +152,6 @@ class JumbotronContainer extends Component {
     const body = {
       line1, line2, line3
     }
-    console.log("fetch body =>", body);
     
     const token = document.querySelector('meta[name="csrf-token"]').content
     
