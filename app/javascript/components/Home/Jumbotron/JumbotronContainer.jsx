@@ -117,7 +117,7 @@ class JumbotronContainer extends Component {
     if (this.state.hideDiv === false) {
       this.setState ({ hideDiv: true })
     } else {
-      this.setState ({ hideDiv : false})
+      this.setState ({ hideDiv: false })
     }
   }
   
@@ -211,18 +211,16 @@ class JumbotronContainer extends Component {
       hide = ""
     }
     
-    
-    console.log(this.state.hideDiv)
     const jumboData = this.state.jumboData
     let jumoblist = jumboData.map(element => {
       
       return(
         <JumboTile 
-        key={element.id}
-        id={element.id}
-        line1={element.line1}
-        line2={element.line2}
-        line3={element.line3}
+          key={element.id}
+          id={element.id}
+          line1={element.line1}
+          line2={element.line2}
+          line3={element.line3}
         />
         )
       })

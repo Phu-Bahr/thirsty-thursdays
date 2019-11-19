@@ -106,6 +106,7 @@ class VenueContainer extends Component {
       <div>
         <div className="py-5">
           <div className="container">
+            <h1 className="text-center">VENUES</h1>
             <div className="col text-center">
               <Link to="/newVenue">
                 <button type="button" className="btn-info mb-3">
