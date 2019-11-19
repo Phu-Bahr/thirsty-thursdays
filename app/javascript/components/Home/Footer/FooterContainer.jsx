@@ -9,10 +9,23 @@ class FooterContainer extends Component {
         this.state = {
             footerData: [],
             refreshKey: false,
-            hideDiv: true
+            hideDiv: true,
+            name: "",
+            street: "",
+            citystate: "",
+            contact1: "",
+            contact2: "",
+            contact3: "",
+            contact4: "",
+            facebook: "",
+            twitter: "",
+            instagram: "",
+            other: ""
         }
 
         this.clickEdit = this.clickEdit.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+        this.onChange = this.onChange.bind(this)
     }
 
     clickEdit(event) {
@@ -22,6 +35,44 @@ class FooterContainer extends Component {
             this.setState ({ hideDiv: false })
         }
     }
+
+    onChange(event) {
+        this.setState ({ [event.target.name]: event.target.value })
+    }
+
+    onSubmit (event) {
+        event.preventDefault()
+        const urls = "/api/v1/footers/1"
+        const { name, street, citystate, contact1, contact2, contact3, contact4, facebook, twitter, instagram, other } = this.state
+        
+        const body = {
+            name, street, citystate, contact1, contact2, contact3, contact4, facebook, twitter, instagram, other
+        }
+        
+        
+        const token = document.querySelector('meta[name="csrf-token"]').content
+        
+        fetch(urls, {
+            method: "PUT",
+            headers: {
+                "X-CSRF-Token": token,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        .then (response => {
+            if (response.ok) {
+                return response
+            } else {
+                let errorMessage = `${response.status} (${response.statusText})`,
+                error = new Error(errorMessage)
+                throw error
+            }
+        })
+        .then(this.setState({ refreshKey: true }))
+        .catch(error => console.log(error.message)
+        )
+      }
 
     componentDidMount() {
         fetch("/api/v1/footers")
@@ -38,31 +89,68 @@ class FooterContainer extends Component {
         .then(body => {
             let new_footerData = body
             this.setState ({ footerData: new_footerData })
+            this.setState ({ 
+                name : body[0].name,
+                street : body[0].street,
+                citystate : body[0].citystate,
+                contact1 : body[0].contact1,
+                contact2 : body[0].contact2,
+                contact3 : body[0].contact3,
+                contact4 : body[0].contact4,
+                facebook : body[0].facebook,
+                twitter : body[0].twitter,
+                instagram : body[0].instagram,
+                other : body[0].other
+            })
+            
         })
         .catch(error => console.log(error.message)
         )
     }
-    render () {
 
+    componentDidUpdate() {
+        if (this.state.refreshKey === true) {
+            fetch("api/v1/footers")
+            .then(response => {
+                if (response.ok) {
+                    return response
+                } else {
+                    let errorMessage = `${response.status} (${response.statusText})`,
+                    error = new Error(errorMessage)
+                    throw error
+                }
+            })
+            .then(response => response.json())
+            .then(body => {
+                let new_footer = body
+                this.setState ({ footerData : new_footer})
+            })
+            .then(this.setState ({ refreshKey: false }))
+        }
+    }
+
+    render () {
+        
         let hide
         if (this.state.hideDiv === true) {
             hide = "invisible"
         } else {
             hide = ""
         }
-
+        
         const footerData = this.state.footerData
+        
         let footerOfficeData = footerData.map(element => {
             return(
                 <FooterEditOffice
-                    key={element.id}
-                    id={element.id}
-                    name={element.name}
-                    street={element.street}
-                    citystate={element.citystate}
+                key={element.id}
+                id={element.id}
+                name={element.name}
+                street={element.street}
+                citystate={element.citystate}
                 />
-            )            
-        })
+                )            
+            })
 
         let footerContactUsData = footerData.map(element => {
             return(
@@ -93,6 +181,7 @@ class FooterContainer extends Component {
         return (
             <div>
                 <div className="footerbackground py-5">
+
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-12 col-sm-4 col-md-4 ">
@@ -100,151 +189,156 @@ class FooterContainer extends Component {
                                 {footerOfficeData}
                             </div>
                             <div className="col-xs-12 col-sm-4 col-md-4">
-                            <h3 className="d-flex justify-content-center">CONTACT US</h3>
+                                <h3 className="d-flex justify-content-center">CONTACT US</h3>
                                 {footerContactUsData}
                             </div>
                             <div className="col-xs-12 col-sm-4 col-md-4">
-                            <h3 className="d-flex justify-content-center">SOCIAL</h3> 
+                                <h3 className="d-flex justify-content-center">SOCIAL</h3> 
                                 {footerSocialData}
                             </div>
                         </div>
                     </div>
+
                     <div className="col-sm-12 mt-5 text-center">
                         <button type="button" className="btn btn-info" onClick={this.clickEdit}>Edit</button>
                     </div>
+                    
                     <div className={"container" + " " + hide}>
                         <div className="row">
                             <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
                                 <form onSubmit={this.onSubmit}>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="name"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="Name"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="street"
-                                        id="street"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="Street"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="citystate"
-                                        id="citystate"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="City, State Zip"
-                                    />
-                                </div>
-                                <button type="submit" className="btn custom-button mt-n3">
-                                    Edit Office
-                                </button>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            id="name"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.name}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="street"
+                                            id="street"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.street}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="citystate"
+                                            id="citystate"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.citystate}
+                                        />
+                                    </div>
+                                    <button type="submit" className="btn custom-button mt-n3">
+                                        Edit Office
+                                    </button>
                                 </form>
                             </div>
+
                             <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
                                 <form onSubmit={this.onSubmit}>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="line1"
-                                        id="line1"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="Phone/Email"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="line2"
-                                        id="line2"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="Phone/Email"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="line3"
-                                        id="line3"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="Phone/Email"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="line3"
-                                        id="line3"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="Phone/Email"
-                                    />
-                                </div>
-                                <button type="submit" className="btn custom-button mt-n3">
-                                    Edit Contact Info
-                                </button>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="contact1"
+                                            id="contact1"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.contact1}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="contact2"
+                                            id="contact2"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.contact2}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="contact3"
+                                            id="contact3"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.contact3}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="contact4"
+                                            id="contact4"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.contact4}
+                                        />
+                                    </div>
+                                    <button type="submit" className="btn custom-button mt-n3">
+                                        Edit Contact Info
+                                    </button>
                                 </form>
                             </div>
+
                             <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
                                 <form onSubmit={this.onSubmit}>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="line1"
-                                        id="line1"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="Facebook"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="line2"
-                                        id="line2"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="Twitter"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="line3"
-                                        id="line3"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="Instagram"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <input
-                                        type="text"
-                                        name="line3"
-                                        id="line3"
-                                        className="form-control"
-                                        onChange={this.onChange}
-                                        placeholder="Other"
-                                    />
-                                </div>
-                                <button type="submit" className="btn custom-button mt-n3">
-                                    Edit Social
-                                </button>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="facebook"
+                                            id="facebook"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.facebook}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="twitter"
+                                            id="twitter"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.twitter}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="instagram"
+                                            id="instagram"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.instagram}
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <input
+                                            type="text"
+                                            name="other"
+                                            id="other"
+                                            className="form-control"
+                                            onChange={this.onChange}
+                                            placeholder={this.state.other}
+                                        />
+                                    </div>
+                                    <button type="submit" className="btn custom-button mt-n3">
+                                        Edit Social
+                                    </button>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 </div>
