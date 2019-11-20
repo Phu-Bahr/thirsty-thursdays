@@ -64,9 +64,11 @@ class NewVenue extends React.Component {
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-sm-12 col-lg-6 offset-lg-3">
+
                         <h1 className="font-weight-normal mb-5">
                             Add a new venue to keep it lit!
                         </h1>
+
                         <form onSubmit={this.onSubmit}>
                             <div className="form-group">
                                 <label htmlFor="venueName">Venue name</label>
@@ -156,19 +158,21 @@ class NewVenue extends React.Component {
                                     onChange={this.onChange}
                                 />
                             </div>
+
                             <button type="submit" className="btn custom-button mt-3">
                                 Create Venue
                             </button>
+
                             <Link to="/" className="btn btn-link mt-3">
                                 Back to Home Page
                             </Link>
+
                         </form>
                     </div>
                 </div>
             </div>
         )
     }
-
 }
 
 export default NewVenue

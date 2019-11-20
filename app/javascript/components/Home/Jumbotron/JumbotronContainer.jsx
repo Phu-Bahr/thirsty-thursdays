@@ -138,8 +138,8 @@ class JumbotronContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      let new_jumboData = body
-      this.setState ({ jumboData: new_jumboData })
+      let newJumboData = body
+      this.setState ({ jumboData: newJumboData })
     })
     .catch(error => console.log(error.message))
   }
@@ -191,8 +191,8 @@ class JumbotronContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        let new_jumbo = body
-        this.setState({ jumboData: new_jumbo})
+        let newJumbo = body
+        this.setState({ jumboData: newJumbo})
       })
       .then(this.setState ({ refreshKey: false}))
     }
@@ -221,14 +221,15 @@ class JumbotronContainer extends Component {
           line2={element.line2}
           line3={element.line3}
         />
-        )
-      })
+      )
+    })
       
       return (
         <div>
             <div className="text-white text-center rgba-stylish-strong">
               <div className="card card-image py-5" style={{backgroundColor: "Black"}}>
                 <div className="py-5">
+
                   <div>
                     <Particles className="particles overlayParticle" params={particleOpt} />
                   </div>
@@ -239,52 +240,55 @@ class JumbotronContainer extends Component {
                     <button type="button" className="btn btn-info" onClick={this.clickEdit}>Edit</button>
                   </div>
                 
-                  
                   <div className={"container mt-5" + " " + hide}>
                     <div className="row">
                       <div className="col-sm-12 col-lg-6 offset-lg-3">
+
                         <p className="font-weight-normal mb-5">
                           Update your info here...
                         </p>
+
                         <form onSubmit={this.onSubmit}>
                           <div className="form-group">
-                              <input
-                                type="text"
-                                name="line1"
-                                id="line1"
-                                className="form-control"
-                                onChange={this.onChange}
-                                placeholder="line 1"
-                              />
+                            <input
+                              type="text"
+                              name="line1"
+                              id="line1"
+                              className="form-control"
+                              onChange={this.onChange}
+                              placeholder="line 1"
+                            />
                           </div>
                           <div className="form-group">
-                              <input
-                                type="text"
-                                name="line2"
-                                id="line2"
-                                className="form-control"
-                                onChange={this.onChange}
-                                placeholder="line 2"
-                              />
+                            <input
+                              type="text"
+                              name="line2"
+                              id="line2"
+                              className="form-control"
+                              onChange={this.onChange}
+                              placeholder="line 2"
+                            />
                           </div>
                           <div className="form-group">
-                              <input
-                                type="textarea"
-                                name="line3"
-                                id="line3"
-                                className="form-control"
-                                onChange={this.onChange}
-                                placeholder="line 3"
-                              />
+                            <input
+                              type="textarea"
+                              name="line3"
+                              id="line3"
+                              className="form-control"
+                              onChange={this.onChange}
+                              placeholder="line 3"
+                            />
                           </div>
+
                           <button type="submit" className="btn custom-button mt-3">
                             Update title data
                           </button>
+
                         </form>
+
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>

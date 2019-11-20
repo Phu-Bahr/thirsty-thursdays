@@ -87,8 +87,8 @@ class FooterContainer extends Component {
         })
         .then(response => response.json())
         .then(body => {
-            let new_footerData = body
-            this.setState ({ footerData: new_footerData })
+            let newFooterData = body
+            this.setState ({ footerData: newFooterData })
             this.setState ({ 
                 name : body[0].name,
                 street : body[0].street,
@@ -122,8 +122,8 @@ class FooterContainer extends Component {
             })
             .then(response => response.json())
             .then(body => {
-                let new_footer = body
-                this.setState ({ footerData : new_footer})
+                let newFooter = body
+                this.setState ({ footerData : newFooter})
             })
             .then(this.setState ({ refreshKey: false }))
         }
@@ -143,11 +143,11 @@ class FooterContainer extends Component {
         let footerOfficeData = footerData.map(element => {
             return(
                 <FooterEditOffice
-                key={element.id}
-                id={element.id}
-                name={element.name}
-                street={element.street}
-                citystate={element.citystate}
+                    key={element.id}
+                    id={element.id}
+                    name={element.name}
+                    street={element.street}
+                    citystate={element.citystate}
                 />
                 )            
             })
@@ -345,7 +345,6 @@ class FooterContainer extends Component {
             </div>
         )
     }
-
 }
 
 export default FooterContainer
