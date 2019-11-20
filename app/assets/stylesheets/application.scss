@@ -30,7 +30,6 @@ body {
     border: #565050
 }
 
-
 .custom-button.btn {
   background-color: #293241;
   color: #FFF;
@@ -149,4 +148,122 @@ body {
   background: whitesmoke;
 }
 
+.iconfont {
+  font-size: 30px;
+}
+
 // end of footer
+
+$primary: hsla(120, 74%, 75%, 0.6); //#8eee8e
+$primary-dark: hsla(120, 74%, 75%, 0.3); //#8eee8e
+
+$white87: hsla(0, 0%, 100%, 0.87); //#fff
+$white60: hsla(0, 0%, 100%, 0.6); //#fff
+$white30: hsla(0, 0%, 100%, 0.3); //#fff
+$white15: hsla(0, 0%, 100%, 0.15); //#fff
+$white0: hsla(0, 0%, 100%, 0.0); //#fff
+
+$dark-gray: hsla(0, 0%, 7%, 1); //#121212
+
+$link: hsla(208, 100, 67, 1); //#56afff
+$link-light: hsla(192, 100, 49, 1); //#00C8FB
+
+/**
+ * rem
+ */
+// Convert a pixel value to REM units
+@function rem($pixel) {
+  @return $pixel / 16 + rem;
+}
+
+// icon
+.c-magic-icon {
+	position: relative;
+	display: block;
+	text-decoration: none;
+	outline: none;
+	line-height: rem(45);
+  display: inline-block;
+ 	text-align: center;
+	margin: 0 rem(4);
+	
+	& * {
+		pointer-events: none;
+	}
+
+	&:hover .c-magic-icon__curtain {
+  transform: translate(0, -100%);
+	}
+	
+	&:focus {
+   	.c-magic-icon__outline {
+			border: rem(1) solid $link;
+			color: $link;
+		}
+	}
+	
+	&:active .c-magic-icon__fill{
+		opacity: 40%;
+	}
+	
+	&:active,
+	&.is-active:not(:focus)	{
+   	.c-magic-icon__outline {
+      	border: rem(1) solid $white87;
+      	color: $white87;
+    	}
+  	} 
+}
+	
+// icons layers
+
+.c-magic-icon__fill {
+ 	border-radius: 50%;
+	border: rem(1) solid $white87;
+ 	color: $dark-gray;
+   display: inline-block;
+   width: rem(45);
+   height: rem(45);
+}
+
+.twitter {
+	background-color: #4690D4;
+}
+
+.facebook {
+	background-color: #3da57e;
+}
+
+.instagram {
+	background-color: #AE63E4;
+}
+
+.other {
+	background-color: #EA4C89;
+}
+
+.c-magic-icon__fill {
+	opacity: 80%;
+}
+
+.c-magic-icon__curtain {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 10;
+	left: 0;
+	background-color: whitesmoke;
+	transform: translate(0, 0%);
+	transition: transform 0.18s ease-out;
+}
+
+.c-magic-icon__outline {
+	border-radius: 50%;
+	border: rem(1) solid black;
+	color: black;
+	position: absolute;
+	top: 0;
+	left: 0;
+ 	width: rem(45);
+ 	height: rem(45);
+}

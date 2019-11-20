@@ -25,8 +25,8 @@ class VenueContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        let new_venues = body;
-        this.setState({ venues: new_venues });
+        let newVenues = body;
+        this.setState({ venues: newVenues });
       })
       .catch(() => this.props.history.push("/"))
   }
@@ -68,8 +68,8 @@ class VenueContainer extends Component {
         })
         .then(response => response.json())
         .then(body => {
-          let new_venues = body;
-          this.setState({ venues: new_venues });
+          let newVenues = body;
+          this.setState({ venues: newVenues });
         })
         .then(this.setState ({ refreshKey : false }))
     }
@@ -107,6 +107,7 @@ class VenueContainer extends Component {
         <div className="py-5">
           <div className="container">
             <h1 className="text-center">VENUES</h1>
+
             <div className="col text-center">
               <Link to="/newVenue">
                 <button type="button" className="btn-info mb-3">
@@ -114,9 +115,11 @@ class VenueContainer extends Component {
                 </button>
               </Link>
             </div>
+
             <div className="row">
               {venueList}
             </div>
+            
           </div>
         </div>
       </div>
