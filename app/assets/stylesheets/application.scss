@@ -47,6 +47,11 @@ body {
 // end of venue
 
 // jumbotron
+
+.jumboBackground {
+  background-color: black !important;
+}
+
 .hero {
   width: 100vw;
   height: 55vh;
@@ -75,27 +80,21 @@ body {
 
 // NAV BAR CSS
 
+.navbar-font {
+  font-size: 31px;
+  color: black;
+  font-weight: 800;
+}
+
 .site-header {
   background-color: whitesmoke;
   padding: 20px 10px;
   opacity: .9;
 }
 
-.site-header a {
-  color: #999;
-  transition: ease-in-out color 0.3s;
-}
-
-.header-nav-item {
-  font-size: 16px;
-  font-weight: 300;
-  padding: 8px;
-  cursor: pointer;
-  position: relative;
-}
-
 .navbar-underline:link {
   text-decoration: none;
+  font-size: 15px;
 }
 
 .navbar-underline:hover,
@@ -264,3 +263,25 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
 // end of social css
 
 // end of footer
+
+// beginning Company component
+
+.parallax {
+  /* The image used */
+  background: url("https://wallpaperplay.com/walls/full/d/c/f/61559.jpg");
+  filter: grayscale(100%);
+  /* Set a specific height */
+  height: 400px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.companybackground {
+  background: whitesmoke;
+  height: 100px;
+}
+// end of company
