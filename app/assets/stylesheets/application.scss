@@ -144,11 +144,13 @@ body {
 // footer 
 
 .footerbackground {
-  background: whitesmoke;
+  background: black;
+  color: white;
 }
 
 .iconfont {
   font-size: 30px;
+  color:whitesmoke;
 }
 
 
@@ -192,7 +194,7 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
 	}
 
 	&:hover .c-magic-icon__curtain {
-  transform: translate(0, -100%);
+  transform: translate(0, 100%);
 	}
 	
 	&:focus {
@@ -205,21 +207,13 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
 	&:active .c-magic-icon__fill{
 		opacity: 40%;
 	}
-	
-	&:active,
-	&.is-active:not(:focus)	{
-   	.c-magic-icon__outline {
-      	border: rem(1) solid $white87;
-      	color: $white87;
-    	}
-  	} 
+	 
 }
 	
 // icons layers
 
 .c-magic-icon__fill {
  	border-radius: 50%;
-	border: rem(1) solid $white87;
  	color: $dark-gray;
    display: inline-block;
    width: rem(45);
@@ -239,22 +233,22 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
 }
 
 .other {
-	background-color: #FFFFFF;
+	background-color: blue;
 }
 
 .c-magic-icon__fill {
-	opacity: 80%;
+  opacity: 80%;
 }
 
 .c-magic-icon__curtain {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	top: 10;
+	top: 0;
 	left: 0;
-	background-color: whitesmoke;
+	background-color: black;
 	transform: translate(0, 0%);
-	transition: transform 0.18s ease-out;
+  transition: transform 0.18s ease-out;
 }
 
 .c-magic-icon__outline {
