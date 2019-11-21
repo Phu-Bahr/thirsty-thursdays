@@ -8,7 +8,7 @@ const FooterEditSocial = props => {
             <div className="d-flex justify-content-center mt-3">	
                 <Link to={props.facebook} target="blank" className="c-magic-icon">
                     <div className="c-magic-icon__fill facebook">
-                        <FontAwesomeIcon icon={['fab', 'facebook-f']} className="iconfont mt-2" />
+                        <FontAwesomeIcon icon={['fab', 'facebook-f']} className="iconfont mt-2"/>
                     </div>
                     <div className="c-magic-icon__curtain"></div>
                     <div className="c-magic-icon__outline">
