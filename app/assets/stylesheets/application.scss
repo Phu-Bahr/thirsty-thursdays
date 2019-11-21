@@ -75,27 +75,21 @@ body {
 
 // NAV BAR CSS
 
+.navbar-font {
+  font-size: 31px;
+  color: black;
+  font-weight: 800;
+}
+
 .site-header {
   background-color: whitesmoke;
   padding: 20px 10px;
   opacity: .9;
 }
 
-.site-header a {
-  color: #999;
-  transition: ease-in-out color 0.3s;
-}
-
-.header-nav-item {
-  font-size: 16px;
-  font-weight: 300;
-  padding: 8px;
-  cursor: pointer;
-  position: relative;
-}
-
 .navbar-underline:link {
   text-decoration: none;
+  font-size: 15px;
 }
 
 .navbar-underline:hover,

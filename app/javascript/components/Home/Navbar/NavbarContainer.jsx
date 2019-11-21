@@ -11,19 +11,16 @@ class NavbarContainer extends Component {
     render(){
         return(
             <nav className="navbar navbar-expand-lg navbar-light site-header sticky-top py-4">
-                <div className="container">
-                    <div className="mx-auto order-0">
-
-                        <Link to="/newVenue" className="navbar-brand navbar-underline" href="/newVenue">
+                <div className="container-fluid" style={{maxWidth: 1150}}>
+                    
+                        <div className="navbar-font">
                             Club Promotion Inc
-                        </Link>
+                        </div>
 
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
 
-                    </div>
-                
                     <div className="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown">
