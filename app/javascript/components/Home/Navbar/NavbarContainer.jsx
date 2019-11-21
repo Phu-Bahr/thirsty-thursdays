@@ -13,13 +13,13 @@ class NavbarContainer extends Component {
             <nav className="navbar navbar-expand-lg navbar-light site-header sticky-top py-4">
                 <div className="container-fluid" style={{maxWidth: 1150}}>
                     
-                        <div className="navbar-font">
-                            Club Promotion Inc
-                        </div>
+                    <div className="navbar-font" role="navigation">
+                        Club Promotion Inc
+                    </div>
 
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
 
                     <div className="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                         <ul className="navbar-nav ml-auto">

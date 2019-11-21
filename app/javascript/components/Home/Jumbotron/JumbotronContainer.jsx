@@ -226,8 +226,8 @@ class JumbotronContainer extends Component {
       
       return (
         <div>
-            <div className="text-white text-center rgba-stylish-strong">
-              <div className="card card-image py-5" style={{backgroundColor: "Black"}}>
+            <div className="text-white text-center">
+              <div className="card card-image py-5 jumboBackground" >
                 <div className="py-5">
 
                   <div>
