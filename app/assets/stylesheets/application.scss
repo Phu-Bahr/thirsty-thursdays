@@ -14,7 +14,6 @@
  *= require_self
  */
 
-
 body {
   background: linear-gradient(to right, rgb(255, 255, 255), rgb(1, 66, 79))
 }
@@ -152,7 +151,8 @@ body {
   font-size: 30px;
 }
 
-// end of footer
+
+// social css
 
 $primary: hsla(120, 74%, 75%, 0.6); //#8eee8e
 $primary-dark: hsla(120, 74%, 75%, 0.3); //#8eee8e
@@ -226,20 +226,20 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
    height: rem(45);
 }
 
-.twitter {
-	background-color: #4690D4;
+.facebook {
+  background-color: #3B5998;
 }
 
-.facebook {
-	background-color: #3da57e;
+.twitter {
+	background-color: #1CA1F2;
 }
 
 .instagram {
-	background-color: #AE63E4;
+  background: linear-gradient(216deg, rgba(64,93,230,1) 0%, rgba(225,48,108,1) 54%, rgba(255,220,128,1) 100%);
 }
 
 .other {
-	background-color: #EA4C89;
+	background-color: #FFFFFF;
 }
 
 .c-magic-icon__fill {
@@ -259,7 +259,6 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
 
 .c-magic-icon__outline {
 	border-radius: 50%;
-	border: rem(1) solid black;
 	color: black;
 	position: absolute;
 	top: 0;
@@ -267,3 +266,7 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
  	width: rem(45);
  	height: rem(45);
 }
+
+// end of social css
+
+// end of footer
