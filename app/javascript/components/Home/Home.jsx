@@ -5,6 +5,7 @@ import NavbarContainer from '../Home/Navbar/NavbarContainer'
 import FooterContainer from '../Home/Footer/FooterContainer'
 import CompanyContainer from '../Home/Company/CompanyContainer';
 import ReservationContainer from '../Home/Reservation/ReservationContainer';
+import AnnouncementContainer from '../Home/Announcement/AnnouncementContainer';
 
 class Home extends Component {
 
@@ -18,6 +19,7 @@ class Home extends Component {
             <div className="master">
                 <NavbarContainer />
                 <JumbotronContainer />
+                <AnnouncementContainer />
                 <VenueContainer />
                 <ReservationContainer />
                 <CompanyContainer />

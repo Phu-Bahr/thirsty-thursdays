@@ -104,10 +104,6 @@ class VenueContainer extends Component {
   
     return(
       <div>
-        <div style={{height: 300 }}>
-          Insert stuff here
-        </div>
-        
         <div className="parallaxVenue">
           <div className="row h-100">
               <div className="col-md-12 align-self-center">
