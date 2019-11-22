@@ -14,13 +14,21 @@
  *= require_self
  */
 
+ @import url('https://fonts.googleapis.com/css?family=Lato:300,700|Prata"');
+
 body {
   background: linear-gradient(to right, rgb(255, 255, 255), rgb(1, 66, 79));
 }
 
 .master {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+// font-family: ambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ }
+ 
+ h1, h2, h3, h4, h5, h6 {
+  font-family: 'Prata', serif;
+ }
 
 .glow-border {
   box-shadow: 0px 0px 30px 10px #565050;
@@ -84,6 +92,17 @@ body {
   left: 0;
 }
 
+.jumboFont {
+  font-size: 6vw;
+}
+
+.jumboFont2 {
+  font-size: 3vw;
+}
+
+.jumboFont3 {
+  font-size: 4vw;
+}
 // end of jumbotron
 
 // NAV BAR CSS
@@ -298,6 +317,7 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
   text-align: center;
   letter-spacing: 8px;
   text-transform: uppercase;
+  font-size: 5vw;
 }
 
 // end of company

@@ -12,7 +12,7 @@ class ReservationContainer extends Component {
                 <div className="parallaxReservation">
                     <div className="row h-100">
                         <div className="col-md-12 align-self-center">
-                            <h1 className="companyfont display-3">Reservations</h1>
+                            <h1 className="companyfont">Reservations</h1>
                         </div>
                     </div>
                 </div>
