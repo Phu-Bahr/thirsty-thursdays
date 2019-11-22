@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
-class CompanyContainer extends Component {
+class ReservationContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {}
     }
 
     render() {
-        return(
+        return (
             <div>
-                <div className="parallaxCompany">
+                <div className="parallaxReservation">
                     <div className="row h-100">
                         <div className="col-md-12 align-self-center">
-                            <h1 className="companyfont display-3">Company</h1>
+                            <h1 className="companyfont display-3">Reservations</h1>
                         </div>
                     </div>
                 </div>
@@ -24,4 +24,4 @@ class CompanyContainer extends Component {
     }
 }
 
-export default CompanyContainer
+export default ReservationContainer

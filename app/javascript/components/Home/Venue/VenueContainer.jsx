@@ -104,22 +104,29 @@ class VenueContainer extends Component {
   
     return(
       <div>
-        <div className="py-5">
-          <div className="container">
-            <h1 className="text-center">VENUES</h1>
+        <div style={{height: 300 }}>
+          Insert stuff here
+        </div>
+        
+        <div className="parallaxVenue">
+          <div className="row h-100">
+              <div className="col-md-12 align-self-center">
+                <h1 className="companyfont display-3">Venues</h1>
+              </div>
+          </div>
+        </div>
 
-            <div className="col text-center">
-              <Link to="/newVenue">
-                <button type="button" className="btn-info mb-3">
-                Add new venue
-                </button>
-              </Link>
-            </div>
+        <div className="container">
+          <div className="col text-center">
+            <Link to="/newVenue">
+              <button type="button" className="btn-info mb-3">
+              Add new venue
+              </button>
+            </Link>
+          </div>
 
-            <div className="row">
-              {venueList}
-            </div>
-            
+          <div className="row">
+            {venueList}
           </div>
         </div>
       </div>
