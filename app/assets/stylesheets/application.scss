@@ -22,12 +22,14 @@ body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
- .glow-border {
-    -webkit-box-shadow: 0px 0px 30px 10px #565050;
-    -moz-box-shadow: 0px 0px 30px 10px #565050;
-    box-shadow: 0px 0px 30px 10px #565050;
-  }
+.glow-border {
+  box-shadow: 0px 0px 30px 10px #565050;
+}
 
+.invisible {
+  display: none;
+}
+  
 // venue
 
 .border {
@@ -42,6 +44,16 @@ body {
 .custom-button.btn:hover {
   color: #FFF !important;
   border: none;
+}
+
+.parallaxVenue {
+  background: url("https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  filter: grayscale(100%);
+  height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 // end of venue
@@ -70,10 +82,6 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-}
-
-.invisible {
-  display: none;
 }
 
 // end of jumbotron
@@ -266,22 +274,44 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
 
 // beginning Company component
 
-.parallax {
-  /* The image used */
-  background: url("https://wallpaperplay.com/walls/full/d/c/f/61559.jpg");
+.parallaxCompany {
+  background: url("https://weraveyou.com/wp-content/uploads/2019/11/slideshow-1496136375.jpg");
   filter: grayscale(100%);
-  /* Set a specific height */
   height: 400px;
-
-  /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.companybackground {
+.companycontent {
   background: whitesmoke;
-  height: 100px;
+  height: 100%;
+  text-align: center;
+  font-size: 26px;
+
 }
+
+.companyfont {
+  position: relative;
+  color: white;
+  text-align: center;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
 // end of company
+
+// reservation css
+
+.parallaxReservation {
+  background: url("https://bottle-service-vegas.com/wp-content/uploads/2019/04/Bottle-service-seating-areas.jpg");
+  filter: grayscale(100%);
+  height: 400px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// end of reservation
