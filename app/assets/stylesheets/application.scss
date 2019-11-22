@@ -14,16 +14,16 @@
  *= require_self
  */
 
- @import url('https://fonts.googleapis.com/css?family=Lato:300,700|Prata"');
+//  @import url('https://fonts.googleapis.com/css?family=Lato:300,700|Prata"');
 
 body {
-  background: linear-gradient(to right, rgb(255, 255, 255), rgb(1, 66, 79));
+  background: linear-gradient(to right,rgb(1, 66, 79), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(1, 66, 79));
 }
 
 .master {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
-// font-family: ambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: ambria, Cochin, Georgia, Times, 'Times New Roman', serif;
  }
  
  h1, h2, h3, h4, h5, h6 {
@@ -36,6 +36,12 @@ body {
 
 .invisible {
   display: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
   
 // venue
@@ -116,7 +122,6 @@ body {
 .site-header {
   background-color: whitesmoke;
   padding: 20px 10px;
-  opacity: .9;
 }
 
 .navbar-underline:link {
