@@ -12,7 +12,7 @@ class CompanyContainer extends Component {
                 <div className="parallaxCompany">
                     <div className="row h-100">
                         <div className="col-md-12 align-self-center">
-                            <h1 className="companyfont display-3">Company</h1>
+                            <h1 className="companyfont">Company</h1>
                         </div>
                     </div>
                 </div>

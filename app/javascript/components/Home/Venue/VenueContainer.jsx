@@ -111,7 +111,7 @@ class VenueContainer extends Component {
         <div className="parallaxVenue">
           <div className="row h-100">
               <div className="col-md-12 align-self-center">
-                <h1 className="companyfont display-3">Venues</h1>
+                <h1 className="companyfont">Venues</h1>
               </div>
           </div>
         </div>
