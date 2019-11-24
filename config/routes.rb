@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :jumbotrons, only: [:index, :update]
       resources :footers, only: [:index, :update]
+      resources :companies, only: [:index, :update]
     end
   end
 
