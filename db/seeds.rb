@@ -29,3 +29,7 @@ footer = Footer.create!(
     instagram: 'www.instagram.com',
     other: 'www.amazon.com'
 )
+
+company = Company.create!(
+    description: "this is the beginning of a company description"
+)
