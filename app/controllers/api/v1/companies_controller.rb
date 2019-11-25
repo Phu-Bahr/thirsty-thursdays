@@ -6,7 +6,7 @@ class Api::V1::CompaniesController < ApplicationController
     end
 
     def update
-        company = Company.find(params[id])
+        company = Company.find(params[:id])
         if company.update_attributes(company_params)
             render json: company
         else

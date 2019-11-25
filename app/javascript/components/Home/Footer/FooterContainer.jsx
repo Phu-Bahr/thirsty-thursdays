@@ -49,7 +49,6 @@ class FooterContainer extends Component {
             name, street, citystate, contact1, contact2, contact3, contact4, facebook, twitter, instagram, other
         }
         
-        
         const token = document.querySelector('meta[name="csrf-token"]').content
         
         fetch(urls, {

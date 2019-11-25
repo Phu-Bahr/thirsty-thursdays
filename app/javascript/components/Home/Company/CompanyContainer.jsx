@@ -4,10 +4,61 @@ class CompanyContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            companyData: []
+            companyData: [],
+            description: "",
+            refreshKey: false,
+            hidDiv: false
+        }
+
+        this.clickEdit = this.clickEdit.bind(this)
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+    }
+
+    clickEdit (event) {
+        if (this.state.hidDiv === false) {
+            this.setState ({ hidDiv: true })
+        } else {
+            this.setState ({ hidDiv: false })
         }
     }
 
+    onChange (event) {
+        this.setState ({ [event.target.name]: event.target.value})
+    }
+
+    onSubmit (event) {
+        event.preventDefault()
+        const urls = "/api/v1/companies/1"
+        const { description } = this.state
+
+        const body = {
+            description
+        }
+
+        const token = document.querySelector('meta[name="csrf-token"]').content
+
+        fetch(urls, {
+            method: "PUT",
+            headers: {
+                "X-CSRF-Token": token,
+                "ContentType": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        .then (response => {
+            if (response.ok) {
+                return response
+            } else {
+                let errorMessage = `${response.status} (${response.statusText})`,
+                error = new Error(errorMessage)
+                throw error
+            }
+        })
+        .then(this.setState({ refreshKey: true}))
+        .catch(error => console.log(error.message)
+        )
+    }
     componentDidMount() {
         fetch("/api/v1/companies")
         .then(response => {
@@ -29,6 +80,15 @@ class CompanyContainer extends Component {
     }
 
     render() {
+        console.log(this.state.description);
+        
+        let hide
+        if (this.state.hidDiv === true) {
+            hide = "invisible"
+        } else {
+            hide = ""
+        }
+        
         let companyData = this.state.companyData
         let companyDescription = companyData.map(element => {
             return element.description
@@ -43,9 +103,27 @@ class CompanyContainer extends Component {
                         </div>
                     </div>
                 </div>
-                <section className="container-fluid companycontent py-5">
-                    <p> {companyDescription} </p>
-                </section>
+                <div>
+                    <section className="container-fluid companycontent py-5">
+                        <p> {companyDescription} </p>
+                        <button type="button" className="btn btn-info" onClick={this.clickEdit}>Edit</button>
+                        <div className={"col-xs-12 col-sm-12 col-md-12" + " " + hide}>
+                            <form onSubmit={this.onSubmit}>
+                                <div className="form-group pt-3">
+                                    <input
+                                        type="text"
+                                        name="description"
+                                        id="description"
+                                        className="form-control"
+                                        onChange={this.onChange}
+                                        placeholder="Update Description Here..."
+                                    />  
+                                </div>
+                                <button type="submit" className="btn custom-button">Update</button>
+                            </form>
+                        </div>
+                    </section>
+                </div>
             </div>
         )
     }
