@@ -7,7 +7,7 @@ class CompanyContainer extends Component {
             companyData: [],
             description: "",
             refreshKey: false,
-            hidDiv: false
+            hidDiv: true
         }
 
         this.clickEdit = this.clickEdit.bind(this)
@@ -42,7 +42,7 @@ class CompanyContainer extends Component {
             method: "PUT",
             headers: {
                 "X-CSRF-Token": token,
-                "ContentType": "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(body)
         })
@@ -79,6 +79,27 @@ class CompanyContainer extends Component {
         )
     }
 
+    componentDidUpdate() {
+        if (this.state.refreshKey === true) {
+            fetch("api/v1/companies")
+            .then(response => {
+                if (response.ok) {
+                    return response
+                } else {
+                    let errorMessage = `${response.status} (${response.statusText})`,
+                    error = new Error(errorMessage)
+                    throw error
+                }
+            })
+            .then(response => response.json())
+            .then(body => {
+                let newCompanyData = body
+                this.setState ({ companyData : newCompanyData })
+            })
+            .then(this.setState ({ refreshKey: false }))
+        }
+    }
+
     render() {
         console.log(this.state.description);
         
@@ -110,13 +131,14 @@ class CompanyContainer extends Component {
                         <div className={"col-xs-12 col-sm-12 col-md-12" + " " + hide}>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group pt-3">
-                                    <input
+                                    <textarea
                                         type="text"
                                         name="description"
                                         id="description"
                                         className="form-control"
                                         onChange={this.onChange}
                                         placeholder="Update Description Here..."
+                                        rows="4"
                                     />  
                                 </div>
                                 <button type="submit" className="btn custom-button">Update</button>
