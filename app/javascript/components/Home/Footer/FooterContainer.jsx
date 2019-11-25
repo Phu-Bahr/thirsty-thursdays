@@ -122,7 +122,7 @@ class FooterContainer extends Component {
             .then(response => response.json())
             .then(body => {
                 let newFooter = body
-                this.setState ({ footerData : newFooter})
+                this.setState ({ footerData : newFooter })
             })
             .then(this.setState ({ refreshKey: false }))
         }
