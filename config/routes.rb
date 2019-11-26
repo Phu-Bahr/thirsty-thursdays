@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :jumbotrons, only: [:index, :update]
       resources :footers, only: [:index, :update]
       resources :companies, only: [:index, :update]
+      resources :announcements, only: [:index, :update]
     end
   end
 
