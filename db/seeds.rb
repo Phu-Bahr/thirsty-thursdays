@@ -1,4 +1,4 @@
-# initial seed for venue, jumbotron, footer
+# initial seed for venue, jumbotron, footer, announcement
 
 venues = Venue.create!([
     { name: 'Jame\'s Cool Bar', street: '21 Jump', city: 'Boston', state: 'MA', zip: '02111', telephone: '555-555-5555', url: 'www.google.com', venue_image: 'https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixlib=rb-1.2.1&w=1000&q=80'},
@@ -32,4 +32,9 @@ footer = Footer.create!(
 
 company = Company.create!(
     description: "this is the beginning of a company description"
+)
+
+announcement = Announcement.create!(
+    description: "hello, we are going to party soon", 
+    flier: "https://www.templatemonster.com/blog/wp-content/uploads/2015/12/christmas-psd-freebie.jpg"
 )
