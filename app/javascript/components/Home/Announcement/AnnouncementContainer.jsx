@@ -4,38 +4,64 @@ class AnnouncementContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            announcementData: []
+            announcementData: [],
+            eventData: []
         }
     }
 
-    componentDidMount(){
-        fetch("/api/v1/announcements")
-        .then(response => {
-            if (response.ok) {
-                return response
-            } else {
-                let errorMessage = `${response.status} (${response.statusText})`,
-                error = new Error(errorMessage)
-                throw error
-            }
-        })
-        .then(response => response.json())
-        .then(body => {
-            let newAnnouncementData = body
-            this.setState ({ announcementData : newAnnouncementData })
+    // componentDidMount(){
+    //     fetch("/api/v1/announcements")
+    //     .then(response => {
+    //         if (response.ok) {
+    //             return response
+    //         } else {
+    //             let errorMessage = `${response.status} (${response.statusText})`,
+    //             error = new Error(errorMessage)
+    //             throw error
+    //         }
+    //     })
+    //     .then(response => response.json())
+    //     .then(body => {
+    //         let newAnnouncementData = body
+    //         this.setState ({ announcementData : newAnnouncementData })
+    //     })
+    //     .catch(error => console.log(error.message)
+    //     )
+    // }
+
+    componentDidMount() {
+        Promise.all([fetch("/api/v1/announcements"), fetch("/api/v1/events")])
+        .then(([response1, response2]) => {
+            return Promise.all([response1.json(), response2.json()])
+            })
+        .then(([response1, response2]) => {
+            this.setState ({ announcementData : response1 })
+            this.setState ({ eventData : response2 })
         })
         .catch(error => console.log(error.message)
         )
     }
 
     render() {
+        console.log(this.state);
+        
         let announcementData = this.state.announcementData
+        let eventData = this.state.eventData
+
         let announcementDescription = announcementData.map(element => {
             return element.description
         })
 
         let announcementFlier = announcementData.map(element => {
             return element.flier
+        })
+
+        let event = eventData.map(element => {
+            return (
+            <li>
+                {element.title} - {element.location} - {element.date} 
+            </li>
+            )
         })
         
         return (
@@ -45,7 +71,6 @@ class AnnouncementContainer extends Component {
                         <h1>Announcements</h1>
                     </div>
                     <div className="pb-5">
-                        
                         <p>{announcementDescription}</p>
                     </div>
                     <div className="row">
@@ -59,24 +84,7 @@ class AnnouncementContainer extends Component {
                         </div>
                         <div className="col-sm-6">
                             <div>    
-                                <li>
-                                    Date, location of event
-                                </li>
-                                <li>
-                                    Date, location of event
-                                </li>
-                                <li>
-                                    Date, location of event
-                                </li>
-                                <li>
-                                    Date, location of event
-                                </li>
-                                <li>
-                                    Date, location of event
-                                </li>
-                                <li>
-                                    Date, location of event
-                                </li>
+                                {event}
                             </div>
                         </div>
                     </div>
