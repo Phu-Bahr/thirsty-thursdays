@@ -40,7 +40,7 @@ class FooterContainer extends Component {
         this.setState ({ [event.target.name]: event.target.value })
     }
 
-    onSubmit (event) {
+    onSubmit(event) {
         event.preventDefault()
         const urls = "/api/v1/footers/1"
         const { name, street, citystate, contact1, contact2, contact3, contact4, facebook, twitter, instagram, other } = this.state
@@ -125,6 +125,8 @@ class FooterContainer extends Component {
                 this.setState ({ footerData : newFooter })
             })
             .then(this.setState ({ refreshKey: false }))
+            .catch(error => console.log(error.message)
+            )
         }
     }
 

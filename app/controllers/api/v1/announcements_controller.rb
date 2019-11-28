@@ -7,7 +7,7 @@ class Api::V1::AnnouncementsController < ApplicationController
 
     def update
         announcement = Announcement.find(params[:id])
-        if company.update_attributes(announcement_params)
+        if announcement.update_attributes(announcement_params)
             render json: announcement
         else
             render json: announcement.errors, status: :unprocessable_entity
@@ -18,5 +18,4 @@ class Api::V1::AnnouncementsController < ApplicationController
         def announcement_params
             params.require(:announcement).permit(:description, :flier)
         end
-
 end
