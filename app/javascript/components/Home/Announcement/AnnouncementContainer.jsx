@@ -64,26 +64,6 @@ class AnnouncementContainer extends Component {
         )
     }
 
-    // componentDidMount(){
-    //     fetch("/api/v1/announcements")
-    //     .then(response => {
-    //         if (response.ok) {
-    //             return response
-    //         } else {
-    //             let errorMessage = `${response.status} (${response.statusText})`,
-    //             error = new Error(errorMessage)
-    //             throw error
-    //         }
-    //     })
-    //     .then(response => response.json())
-    //     .then(body => {
-    //         let newAnnouncementData = body
-    //         this.setState ({ announcementData : newAnnouncementData })
-    //     })
-    //     .catch(error => console.log(error.message)
-    //     )
-    // }
-
     componentDidMount() {
         Promise.all([fetch("/api/v1/announcements"), fetch("/api/v1/events")])
         .then(([response1, response2]) => {
@@ -103,26 +83,28 @@ class AnnouncementContainer extends Component {
 
     componentDidUpdate() {
         if (this.state.refreshKey === true) {
-            Promise.all([fetch("/api/v1/announcements"), fetch("/api/v1/events")])
-            .then(([response1, response2]) => {
-                return Promise.all([response1.json(), response2.json()])
-                })
-            .then(([response1, response2]) => {
-                this.setState ({ 
-                    announcementData : response1, 
-                    description : response1[0].description, 
-                    flier : response1[0].flier })
-                this.setState ({ eventData : response2 })
+            fetch("/api/v1/announcements")
+            .then(response1 => {
+                if (response1.ok) {
+                    return response1
+                } else {
+                    let errorMessage = `${response.status} (${response.statusText})`,
+                    error = new Error(errorMessage)
+                    throw error
+                }
+            })
+            .then(response => response.json ())
+            .then(body => {
+                this.setState ({ announcementData : body })
             })
             .then(this.setState ({ refreshKey : false }))
-            // need to add error messages
             .catch(error => console.log(error.message)
             )
         }
     }
 
     render() {
-
+        
         let hide
         if (this.state.hideEditAnnounce === true) {
             hide = "invisible"
@@ -171,7 +153,7 @@ class AnnouncementContainer extends Component {
                     <div className={"container" + " " + hide}>
                         <div className="row">
                             <div className="col-xs-12 col-sm-12 col-md-12 pb-5">
-                `               <form onSubmit={this.onSubmit}>
+                                <form onSubmit={this.onSubmit}>
                                     <div className="form-group">
                                         <input 
                                             type="text"

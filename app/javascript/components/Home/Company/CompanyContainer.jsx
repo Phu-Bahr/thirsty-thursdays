@@ -55,7 +55,7 @@ class CompanyContainer extends Component {
                 throw error
             }
         })
-        .then(this.setState({ refreshKey: true}))
+        .then(this.setState ({ refreshKey: true }))
         .catch(error => console.log(error.message)
         )
     }
