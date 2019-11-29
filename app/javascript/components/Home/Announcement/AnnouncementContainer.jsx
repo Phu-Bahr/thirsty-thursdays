@@ -98,14 +98,12 @@ class AnnouncementContainer extends Component {
                 this.setState ({ announcementData : body })
             })
             .then(this.setState ({ refreshKey : false }))
-            // need to add error messages
             .catch(error => console.log(error.message)
             )
         }
     }
 
     render() {
-        console.log("description =>>", this.state.description);
         
         let hide
         if (this.state.hideEditAnnounce === true) {
