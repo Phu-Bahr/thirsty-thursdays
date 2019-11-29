@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import EventContainer from "./EventContainer"
 
 class AnnouncementContainer extends Component {
     constructor(props) {
@@ -141,26 +142,35 @@ class AnnouncementContainer extends Component {
         })
 
         let event = eventData.map(element => {
+
             return (
-            <li key={element.id}>
-                {element.title} - {element.location} - {element.date} 
-            </li>
+                <EventContainer 
+                    key={element.id}
+                    id={element.id}
+                    title={element.title}
+                    location={element.location}
+                    date={element.date}
+                />
             )
         })
         
         return (
             <div>
-                <div className="container-fluid companycontent" style={{height: "100%"}}>
-                    <div className="pt-5 pb-3">
-                        <h1>Announcements</h1>
+                <div className="container-fluid companycontent p-5">
+                    <div className="text-center pb-5">
+                        <div>
+                            <h1>Announcements</h1>
+                        </div>
+                        <div>
+                            <p>{announcementDescription}</p>
+                        </div>
+                        <button type="button" className="btn btn-info" onClick={this.clickEdit}>
+                            Edit
+                        </button>
                     </div>
-                    <div className="pb-5">
-                        <p>{announcementDescription}</p>
-                    </div>
-                    <button type="button" className="btn btn-info" onClick={this.clickEdit}>Edit</button>
                     <div className={"container" + " " + hide}>
                         <div className="row">
-                            <div className="col-xs-12 col-sm-12 col-md-12">
+                            <div className="col-xs-12 col-sm-12 col-md-12 pb-5">
                 `               <form onSubmit={this.onSubmit}>
                                     <div className="form-group">
                                         <input 
@@ -191,9 +201,6 @@ class AnnouncementContainer extends Component {
                     </div>
                     <div className="row">
                         <div className="col-sm-6" style={{ height: "100%" }}>
-                            <div>
-                                Image or flyer upload here
-                            </div>
                             <div className="container">
                                 <img src={announcementFlier}></img>
                             </div>
