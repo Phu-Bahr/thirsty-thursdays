@@ -1,12 +1,19 @@
-import React from "react"
+import React, { Component } from "react"
 
-const EventContainer = props => {
-    return (
-        <div>
-            <li>
-                {props.title} - {props.location} @ {props.date}
-            </li>
-        </div>
-    )
+class EventContainer extends Component {
+    constructor(props) {
+        super(props)
+        this.state = ""
+    }
+
+    render(){
+        return (
+            <div>
+                <li>
+                    {this.props.title} - {this.props.location} @ {this.props.date}
+                </li>
+            </div>
+        )
+    }
 }
 export default EventContainer

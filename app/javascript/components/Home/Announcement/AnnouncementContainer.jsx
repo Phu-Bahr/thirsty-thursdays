@@ -147,7 +147,7 @@ class AnnouncementContainer extends Component {
                             <p>{announcementDescription}</p>
                         </div>
                         <button type="button" className="btn btn-info" onClick={this.clickEdit}>
-                            Edit
+                            Edit Announcement/Image
                         </button>
                     </div>
                     <div className={"container" + " " + hide}>
@@ -188,6 +188,14 @@ class AnnouncementContainer extends Component {
                             </div>
                         </div>
                         <div className="col-sm-6">
+                            <div className="row pb-3">
+                                <div className="col-sm-3">
+                                    <h1>Events</h1> 
+                                </div>
+                                <button type="button" className="btn btn-info col-sm-3" onClick={this.clickEventEdit}>
+                                    Edit Events
+                                </button>
+                            </div>
                             <div>    
                                 {event}
                             </div>
