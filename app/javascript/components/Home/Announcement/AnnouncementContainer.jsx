@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import EventContainer from "./EventContainer"
+import NewEvent from "./NewEvent"
 
 class AnnouncementContainer extends Component {
     constructor(props) {
@@ -123,7 +124,7 @@ class AnnouncementContainer extends Component {
             return element.flier
         })
 
-        let event = eventData.map(element => {
+        let events = eventData.map(element => {
 
             return (
                 <EventContainer 
@@ -181,25 +182,36 @@ class AnnouncementContainer extends Component {
                             </div>
                         </div>
                     </div>
+
                     <div className="row">
+
                         <div className="col-sm-6" style={{ height: "100%" }}>
                             <div className="container">
                                 <img src={announcementFlier}></img>
                             </div>
                         </div>
+
                         <div className="col-sm-6">
                             <div className="row pb-3">
-                                <div className="col-sm-3">
+                                <div>
                                     <h1>Events</h1> 
                                 </div>
-                                <button type="button" className="btn btn-info col-sm-3" onClick={this.clickEventEdit}>
-                                    Edit Events
-                                </button>
+                                <div className="px-3">
+                                    <button type="button" className="btn btn-info" onClick={this.clickEventEdit}>
+                                        Edit Events
+                                    </button>
+                                </div>
                             </div>
+
                             <div>    
-                                {event}
+                                {events}
+                            </div>
+
+                            <div className="pt-4">
+                                <NewEvent />
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

@@ -101,7 +101,6 @@ class CompanyContainer extends Component {
     }
 
     render() {
-        console.log(this.state.description);
         
         let hide
         if (this.state.hidDiv === true) {
