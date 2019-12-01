@@ -114,7 +114,6 @@ class AnnouncementContainer extends Component {
         }
         
         let announcementData = this.state.announcementData
-        let eventData = this.state.eventData
 
         let announcementDescription = announcementData.map(element => {
             return element.description
@@ -122,19 +121,6 @@ class AnnouncementContainer extends Component {
 
         let announcementFlier = announcementData.map(element => {
             return element.flier
-        })
-
-        let events = eventData.map(element => {
-
-            return (
-                <EventContainer 
-                    key={element.id}
-                    id={element.id}
-                    title={element.title}
-                    location={element.location}
-                    date={element.date}
-                />
-            )
         })
         
         return (
@@ -185,31 +171,14 @@ class AnnouncementContainer extends Component {
 
                     <div className="row">
 
-                        <div className="col-sm-6" style={{ height: "100%" }}>
+                        <div className="col-sm-6 pb-5" style={{ height: "100%" }}>
                             <div className="container">
                                 <img src={announcementFlier}></img>
                             </div>
                         </div>
 
                         <div className="col-sm-6">
-                            <div className="row pb-3">
-                                <div>
-                                    <h1>Events</h1> 
-                                </div>
-                                <div className="px-3">
-                                    <button type="button" className="btn btn-info" onClick={this.clickEventEdit}>
-                                        Edit Events
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div>    
-                                {events}
-                            </div>
-
-                            <div className="pt-4">
-                                <NewEvent />
-                            </div>
+                            <EventContainer eventData = {this.state.eventData} />
                         </div>
 
                     </div>
