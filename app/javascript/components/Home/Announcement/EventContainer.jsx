@@ -42,32 +42,32 @@ class EventContainer extends Component {
                 throw error
             }
         })
-        .then (this.setState ({ refreshKey : true }))
+        .then(window.location.reload(false))
         .catch(error => console.log(error.message)
         )
     }
 
-    componentDidUpdate() {
-        if (this.state.refreshKey === true) {
-            fetch("/api/v1/events")
-            .then(response => {
-                if (response.ok) {
-                    return response
-                } else {
-                    let errorMessage = `${response.status} (${response.statusText})`,
-                    error = new Error(errorMessage)
-                    throw error
-                }
-            })
-            .then(window.location.reload(false))
-            // find way to push this to parent to rerender
-            // .then(response => response.json())
-            // .then(body => {
-            //     let newEvents = body
-                // this.setState ({eventData : body}) 
-            // })
-        }
-    }
+    // componentDidUpdate() {
+    //     if (this.state.refreshKey === true) {
+    //         fetch("/api/v1/events")
+    //         .then(response => {
+    //             if (response.ok) {
+    //                 return response
+    //             } else {
+    //                 let errorMessage = `${response.status} (${response.statusText})`,
+    //                 error = new Error(errorMessage)
+    //                 throw error
+    //             }
+    //         })
+    //         .then(window.location.reload(false))
+    //         // find way to push this to parent to rerender
+    //         // .then(response => response.json())
+    //         // .then(body => {
+    //         //     let newEvents = body
+    //             // this.setState ({eventData : body}) 
+    //         // })
+    //     }
+    // }
 
     render(){
 
