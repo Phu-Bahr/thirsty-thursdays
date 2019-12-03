@@ -6,10 +6,12 @@ class EventContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            hideDiv : true
+            hideDiv: true,
+            refreshKey: false
         }
 
         this.clickEventEdit = this.clickEventEdit.bind(this)
+        this.deleteEvent = this.deleteEvent.bind(this)
     }
 
     clickEventEdit (event) {
@@ -17,6 +19,53 @@ class EventContainer extends Component {
             this.setState ({ hideDiv : true })
         } else {
             this.setState ({ hideDiv : false })
+        }
+    }
+
+    deleteEvent(id) {
+        const urls = `/api/v1/events/${id}`
+        const token = document.querySelector('meta[name="csrf-token"]').content
+
+        fetch(urls, {
+            method: "DELETE",
+            headers: {
+                "X-CSRF-Token": token,
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response
+            } else {
+                let errorMessage = `${response.status} (${response.statusText})`,
+                error = new Error(errorMessage)
+                throw error
+            }
+        })
+        .then (this.setState ({ refreshKey : true }))
+        .catch(error => console.log(error.message)
+        )
+    }
+
+    componentDidUpdate() {
+        if (this.state.refreshKey === true) {
+            fetch("/api/v1/events")
+            .then(response => {
+                if (response.ok) {
+                    return response
+                } else {
+                    let errorMessage = `${response.status} (${response.statusText})`,
+                    error = new Error(errorMessage)
+                    throw error
+                }
+            })
+            .then(window.location.reload(false))
+            // find way to push this to parent to rerender
+            // .then(response => response.json())
+            // .then(body => {
+            //     let newEvents = body
+                // this.setState ({eventData : body}) 
+            // })
         }
     }
 
@@ -31,6 +80,11 @@ class EventContainer extends Component {
 
         let events = this.props.eventData.map(element => {
 
+            let handleDelete = () => {
+                this.deleteEvent(element.id)
+                console.log("delete event clicked")
+            }
+
             return (
                 <EventTile
                     key={element.id}
@@ -39,6 +93,7 @@ class EventContainer extends Component {
                     location={element.location}
                     date={element.date}
                     hide={hide}
+                    handleDelete={handleDelete}
                 />
             )
         })
