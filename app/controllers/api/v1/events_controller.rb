@@ -1,5 +1,7 @@
 class Api::V1::EventsController < ApplicationController
 
+    protect_from_forgery unless: -> { request.format.json? }
+
     def index
         event = Event.all
         render json: event
@@ -29,11 +31,13 @@ class Api::V1::EventsController < ApplicationController
     end
 
     private
-        def event_params
-            params.permit(:title, :date, :time)
-        end
 
-        def Event
-            @event ||= Event.find(params[:id])
-        end
+    def event_params
+        params.require(:event).permit(:title, :location, :date)
+    end
+
+    def event
+        @event ||= Event.find(params[:id])
+    end
+    
 end

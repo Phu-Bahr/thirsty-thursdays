@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
 
 class NewEvent extends Component {
     constructor(props){
@@ -7,7 +6,8 @@ class NewEvent extends Component {
         this.state = {
             title: "",
             location: "",
-            date: ""
+            date: "",
+            refreshKey: false
         }
 
         this.onChange = this.onChange.bind(this)
@@ -20,18 +20,20 @@ class NewEvent extends Component {
 
     onSubmit(event) {
         event.preventDefault()
-        const urls = "/api/v1/events/create"
-        const {title, location, date} = this.state
+        const urls = "/api/v1/events"
+        const { title, location, date } = this.state
 
         const body = {
             title,
             location,
             date
         }
-
+        
+        console.log("inside submit",body);
+        
         const token = document.querySelector('meta[name="csrf-token"]').content
 
-        fetch ( urls, {
+        fetch(urls, {
             method: "POST",
             headers: {
                 "X-CSRF-Token": token,
@@ -45,12 +47,12 @@ class NewEvent extends Component {
             }
             throw new Error ("Network response was not ok.")
         })
-        .then(response => this.props.history.push("/"))
+        .then(alert("Event has been added!"))
+        .then(window.location.reload(false))
         .catch(error => console.log(error.message))
     }
 
     render() {
-        console.log(this.state);
         
         return (
             <div>
@@ -58,7 +60,8 @@ class NewEvent extends Component {
                     <h4>Add new event here:</h4>
                 </div>
                 <div className="col-sm-12 col-lg-6">
-                    <form onSubmit={this.onSubmit}>
+                    <form onSubmit={ (event) => {
+                        this.onSubmit(event); event.target.reset();}}>
                         <input
                             type="text"
                             name="title"
