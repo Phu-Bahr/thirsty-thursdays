@@ -5,6 +5,15 @@ class Api::V1::EventsController < ApplicationController
         render json: event
     end
 
+    def create
+        event = Event.create!(event_params)
+        if event
+            render json: event
+        else 
+            render json: event.errors
+        end
+    end
+
     def update
         event = Event.find(params[:id])
         if event.update_attributes(event_params)
@@ -21,7 +30,7 @@ class Api::V1::EventsController < ApplicationController
 
     private
         def event_params
-            params.require(:event).permit(:title, :date, :time)
+            params.permit(:title, :date, :time)
         end
 
         def Event

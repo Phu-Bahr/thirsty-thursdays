@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :footers, only: [:index, :update]
       resources :companies, only: [:index, :update]
       resources :announcements, only: [:index, :update]
-      resources :events, only: [:index, :update, :destroy]
+      resources :events, only: [:index, :update, :destroy, :create]
     end
   end
 
