@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 
 class NewEvent extends Component {
     constructor(props){
@@ -8,9 +9,49 @@ class NewEvent extends Component {
             location: "",
             date: ""
         }
+
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+    }
+
+    onChange(event) {
+        this.setState ({ [event.target.name] : event.target.value })
+    }
+
+    onSubmit(event) {
+        event.preventDefault()
+        const urls = "/api/v1/events/create"
+        const {title, location, date} = this.state
+
+        const body = {
+            title,
+            location,
+            date
+        }
+
+        const token = document.querySelector('meta[name="csrf-token"]').content
+
+        fetch ( urls, {
+            method: "POST",
+            headers: {
+                "X-CSRF-Token": token,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json()
+            }
+            throw new Error ("Network response was not ok.")
+        })
+        .then(response => this.props.history.push("/"))
+        .catch(error => console.log(error.message))
     }
 
     render() {
+        console.log(this.state);
+        
         return (
             <div>
                 <div className="px-3">
