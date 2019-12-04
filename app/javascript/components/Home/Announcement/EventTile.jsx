@@ -10,9 +10,10 @@ const EventTile = props => {
                 <button type="button" className="btn btn-info" onClick= {props.clickHideUpdate}>Edit</button>
                 <button type="button" className="btn btn-secondary" onClick={props.handleDelete}>Delete</button>
             <div className={"pt-3" + " " + "ml-n3" + " " + props.hideUpdate}>
-                <div className="col-xs-12 col-sm-12 col-md-12 pb-5">
+                <div className="col-xs-6 col-sm-6 col-md-6 pb-5">
                     <form onSubmit={props.submitUpdate}>
                         <div className="form-group">
+                           <label>Title</label>
                             <input 
                                 type="text"
                                 name="title"
@@ -23,6 +24,7 @@ const EventTile = props => {
                             />
                         </div>
                         <div className="form-group">
+                           <label>Location</label>
                             <input 
                                 type="text"
                                 name="location"
@@ -33,6 +35,7 @@ const EventTile = props => {
                             />
                         </div>
                         <div className="form-group">
+                           <label>Date of Event</label>
                             <input 
                                 type="date"
                                 name="date"

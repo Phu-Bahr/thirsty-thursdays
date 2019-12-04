@@ -6,8 +6,7 @@ class VenueContainer extends Component {
   constructor(props){
       super(props)
       this.state = { 
-        venues: [],
-        refreshKey: false
+        venues: []
       }
       this.deleteVenue = this.deleteVenue.bind(this)
   }
@@ -50,29 +49,8 @@ class VenueContainer extends Component {
           throw error
       }
     })
-    .then (this.setState ({ refreshKey: true }))
+    .then(window.location.reload(false))
     .catch(error => console.log(error.message))
-  }
-
-  componentDidUpdate() {
-    if (this.state.refreshKey === true) {
-      fetch("/api/v1/venues/index")
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage);
-          throw error;
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        let newVenues = body;
-        this.setState({ venues: newVenues });
-      })
-      .then(this.setState ({ refreshKey : false }))
-    }
   }
     
   render(){             
@@ -81,8 +59,10 @@ class VenueContainer extends Component {
     let venueList = venueData.map(venue => {
 
       let handleClick = () => {
-        this.deleteVenue(venue.id)
-        console.log("delete button clicked");
+        let result = confirm("Are you sure?")
+        if (result) {
+          this.deleteVenue(venue.id)
+        }
       }
   
       return (
