@@ -3,17 +3,22 @@ import EventTile from "./EventTile"
 import NewEvent from "./NewEvent"
 
 class EventContainer extends Component {
+    
     constructor(props) {
         super(props)
         this.state = {
             hideDiv: true,
-            refreshKey: false
+            hideUpdate: true,
+            title: "",
+            location: "",
+            date: ""
         }
-
+        
         this.clickEventEdit = this.clickEventEdit.bind(this)
         this.deleteEvent = this.deleteEvent.bind(this)
+        this.updateEvent = this.updateEvent.bind(this)
     }
-
+    
     clickEventEdit (event) {
         if (this.state.hideDiv === false) {
             this.setState ({ hideDiv : true })
@@ -47,29 +52,44 @@ class EventContainer extends Component {
         )
     }
 
-    // componentDidUpdate() {
-    //     if (this.state.refreshKey === true) {
-    //         fetch("/api/v1/events")
-    //         .then(response => {
-    //             if (response.ok) {
-    //                 return response
-    //             } else {
-    //                 let errorMessage = `${response.status} (${response.statusText})`,
-    //                 error = new Error(errorMessage)
-    //                 throw error
-    //             }
-    //         })
-    //         .then(window.location.reload(false))
-    //         // find way to push this to parent to rerender
-    //         // .then(response => response.json())
-    //         // .then(body => {
-    //         //     let newEvents = body
-    //             // this.setState ({eventData : body}) 
-    //         // })
-    //     }
-    // }
+    updateEvent(id) {
+        event.preventDefault()
+        const urls = `/api/v1/events/${id}`
+        const { title, location, date } = this.state
+
+        const body = {
+            title,
+            location,
+            date
+        }
+
+        const token = document.querySelector('meta[name="csrf-token"]').content
+
+        fetch(urls, {
+            method: "PUT",
+            headers: {
+                "X-CSRF-Token": token,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response
+            } else {
+                let errorMessage = `${resopnse.status} (${response.statusText})`,
+                error = new Error(errorMessage)
+                throw error
+            }
+        })
+        .then(alert("Event has been updated."))
+        .then(window.location.reload(false))
+        .catch(error => console.log(error.message)
+        )
+    }
 
     render(){
+        console.log(this.state);
 
         let hide
         if (this.state.hideDiv === true) {
@@ -78,11 +98,33 @@ class EventContainer extends Component {
             hide = ""
         }
 
+        let hideUpdate
+        if (this.state.hideUpdate === true) {
+            hideUpdate = "invisible"
+        } else {
+            hideUpdate = ""
+        }
+
         let events = this.props.eventData.map(element => {
 
             let handleDelete = () => {
                 this.deleteEvent(element.id)
-                console.log("delete event clicked")
+            }
+
+            let submitUpdate = () => {
+                this.updateEvent(element.id)
+            }
+
+            let onChange = (event) => {
+                this.setState ({ [event.target.name] : event.target.value })
+            }
+
+            let clickHideUpdate = () => {
+                if (this.state.hideUpdate === false) {
+                    this.setState ({ hideUpdate : true })
+                } else {
+                this.setState ({ hideUpdate : false })
+                }
             }
 
             return (
@@ -93,7 +135,11 @@ class EventContainer extends Component {
                     location={element.location}
                     date={element.date}
                     hide={hide}
+                    hideUpdate={hideUpdate}
+                    clickHideUpdate={clickHideUpdate}
                     handleDelete={handleDelete}
+                    submitUpdate={submitUpdate}
+                    onChange={onChange}
                 />
             )
         })
@@ -111,13 +157,14 @@ class EventContainer extends Component {
                     </div>
                 </div>
 
+                <div className={"pt-4" + " " + hide}>
+                    <NewEvent />
+                </div>
+
                 <div>
                     {events}
                 </div>
 
-                <div className={"pt-4" + " " + hide}>
-                    <NewEvent />
-                </div>
             </div>
         )
     }

@@ -59,7 +59,7 @@ class NewEvent extends Component {
                 <div className="px-3">
                     <h4>Add new event here:</h4>
                 </div>
-                <div className="col-sm-12 col-lg-6">
+                <div className="col-sm-12 col-lg-6 pb-4">
                     <form onSubmit={ (event) => {
                         this.onSubmit(event); event.target.reset();}}>
                         <input

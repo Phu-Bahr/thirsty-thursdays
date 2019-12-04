@@ -59,6 +59,7 @@ class CompanyContainer extends Component {
         .catch(error => console.log(error.message)
         )
     }
+    
     componentDidMount() {
         fetch("/api/v1/companies")
         .then(response => {

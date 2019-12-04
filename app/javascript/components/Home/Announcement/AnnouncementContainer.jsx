@@ -178,7 +178,10 @@ class AnnouncementContainer extends Component {
                         </div>
 
                         <div className="col-sm-6">
-                            <EventContainer eventData = {this.state.eventData} />
+                            <EventContainer 
+                                eventData = {this.state.eventData} 
+                                refreshKey = {this.state.refreshKey}
+                            />
                         </div>
 
                     </div>
