@@ -11,14 +11,24 @@ class EventContainer extends Component {
             hideUpdate: true,
             title: "",
             location: "",
-            date: ""
+            date: "",
+            selectedStepId: null
         }
         
         this.clickEventEdit = this.clickEventEdit.bind(this)
         this.deleteEvent = this.deleteEvent.bind(this)
         this.updateEvent = this.updateEvent.bind(this)
+        this.setSelectedStep = this.setSelectedStep.bind(this)
     }
     
+    setSelectedStep(stepId) {
+        if (this.state.selectedStepId === stepId) {
+          this.setState({ selectedStepId: null });
+        } else {
+          this.setState({ selectedStepId: stepId });
+        }
+    }
+
     clickEventEdit (event) {
         if (this.state.hideDiv === false) {
             this.setState ({ hideDiv : true })
@@ -98,17 +108,21 @@ class EventContainer extends Component {
             hide = ""
         }
 
-        let hideUpdate
-        if (this.state.hideUpdate === true) {
-            hideUpdate = "invisible"
-        } else {
-            hideUpdate = ""
-        }
-
+        
         let events = this.props.eventData.map(element => {
+            
+            let hideUpdate
+            if (element.id === this.state.selectedStepId) {
+                hideUpdate = ""
+            } else {
+                hideUpdate = "invisible"
+            }
 
             let handleDelete = () => {
-                this.deleteEvent(element.id)
+                let result = confirm("Are you sure?")
+                if (result) {
+                    this.deleteEvent(element.id)
+                }
             }
 
             let submitUpdate = () => {
@@ -120,11 +134,7 @@ class EventContainer extends Component {
             }
 
             let clickHideUpdate = () => {
-                if (this.state.hideUpdate === false) {
-                    this.setState ({ hideUpdate : true })
-                } else {
-                this.setState ({ hideUpdate : false })
-                }
+                this.setSelectedStep(element.id)
             }
 
             return (
