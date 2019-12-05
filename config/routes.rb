@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'venues/index'
       post 'venues/create'
+      put 'venues/update/:id', to: 'venues#update'
       delete '/destroy/:id', to: 'venues#destroy'
     end
   end

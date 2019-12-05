@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from "react-router-dom"
+import EditVenue from './EditVenue';
 
-const VenueTile = props => {     
-  
+const VenueTile = props => {
+
   return(
     <div className="col-md-6 col-middle p-3">
       <div>
@@ -13,9 +15,27 @@ const VenueTile = props => {
         <div>{props.city}, {props.state} {props.zip}</div>
         <div>{props.telephone}</div>
         <div>{props.url}</div>
-        <button type="button" className="btn btn-secondary" onClick={props.handleClick}>
-          Delete Venue
-        </button>
+        <div className="pt-2">
+          <button type="button" className="btn btn-info" onClick= {props.clickHideUpdate}>
+            Edit
+          </button>
+          <button type="button" className="btn btn-secondary" onClick={props.handleClick}>
+            Delete Venue
+          </button>
+        </div>
+        <EditVenue 
+            key={props.id}
+            id={props.id}
+            name={props.name}
+            street={props.street}
+            city={props.city}
+            state={props.state}
+            zip={props.zip}
+            telephone={props.telephone}
+            url={props.url}
+            venueImage={props.venueImage}
+            hideUpdate={props.hideUpdate}
+        />
       </div>
     </div>
   )
