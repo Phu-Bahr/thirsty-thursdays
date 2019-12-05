@@ -6,9 +6,19 @@ class VenueContainer extends Component {
   constructor(props){
       super(props)
       this.state = { 
-        venues: []
+        venues: [],
+        selectedStepId: null
       }
       this.deleteVenue = this.deleteVenue.bind(this)
+      this.setSelectedStep = this.setSelectedStep.bind(this)
+  }
+
+  setSelectedStep(stepId) {
+    if (this.state.selectedStepId === stepId) {
+      this.setState({ selectedStepId: null });
+    } else {
+      this.setState({ selectedStepId: stepId });
+    }
   }
 
   componentDidMount() {
@@ -58,11 +68,22 @@ class VenueContainer extends Component {
     const venueData = this.state.venues
     let venueList = venueData.map(venue => {
 
+      let hideUpdate
+      if (venue.id === this.state.selectedStepId) {
+          hideUpdate = ""
+      } else {
+          hideUpdate = "invisible"
+      }
+
       let handleClick = () => {
         let result = confirm("Are you sure?")
         if (result) {
           this.deleteVenue(venue.id)
         }
+      }
+
+      let clickHideUpdate = () => {
+        this.setSelectedStep(venue.id)
       }
   
       return (
@@ -78,6 +99,8 @@ class VenueContainer extends Component {
           url={venue.url}
           venueImage={venue.venue_image}
           handleClick={handleClick}
+          clickHideUpdate={clickHideUpdate}
+          hideUpdate={hideUpdate}
         />
       )
     })
