@@ -7,7 +7,7 @@ const VenueTile = props => {
   return(
     <div className="col-md-6 col-middle p-3">
       <div>
-        <img src={props.venueImage} />
+        <img className="venueImage" src={props.venueImage} />
       </div>
       <div className="pt-3">
         <div>{props.name}</div>
