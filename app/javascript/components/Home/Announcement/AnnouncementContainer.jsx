@@ -171,9 +171,9 @@ class AnnouncementContainer extends Component {
 
                     <div className="row">
 
-                        <div className="col-sm-6 pb-5" style={{ height: "100%" }}>
-                            <div className="container">
-                                <img src={announcementFlier}></img>
+                        <div className="col-sm-6 pb-5">
+                            <div className="">
+                                <img className="img-fluid" src={announcementFlier}></img>
                             </div>
                         </div>
 
