@@ -116,7 +116,7 @@ class CompanyContainer extends Component {
         })   
 
         return(
-            <div>
+            <div id="companyTag">
                 <div className="parallaxCompany">
                     <div className="row h-100">
                         <div className="col-md-12 align-self-center">

@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import { Link, animateScroll as scroll } from "react-scroll"
+
 
 // fix links
 class NavbarContainer extends Component {
@@ -8,12 +9,16 @@ class NavbarContainer extends Component {
         this.setState = {}
     }
 
+    scrollToTop = () => {
+        scroll.scrollToTop(); 
+    };
+
     render(){
         return(
             <nav className="navbar navbar-expand-lg navbar-light site-header sticky-top py-4">
                 <div className="container-fluid" style={{maxWidth: 1150}}>
                     
-                    <div className="navbar-font" role="navigation">
+                    <div className="navbar-font" role="navigation" onClick={this.scrollToTop}>
                         Club Promotion Inc
                     </div>
 
@@ -31,20 +36,60 @@ class NavbarContainer extends Component {
                                     <Link to="/newVenue" className="dropdown-item navbar-underline">Club 1 Website</Link>
                                     <Link to="/newVenue" className="dropdown-item navbar-underline">Club 2 Website</Link>
                                         <div className="dropdown-divider"></div>
-                                    <Link to="/newVenue" className="dropdown-item navbar-underline">Bring to list of clubs here</Link>
+                                    <Link 
+                                        to="venueTag" 
+                                        className="dropdown-item navbar-underline"
+                                        smooth={true}
+                                        offset={-90}
+                                        duration={1100}
+                                    >
+                                        Bring to list of clubs here
+                                    </Link>
                                 </div>
                             </li>
                             <li className="nav-item">
-                                <Link to="/newVenue" className="nav-link navbar-underline">RESERVATIONS</Link>
+                                <Link    
+                                    to="reservationTag" 
+                                    className="nav-link navbar-underline"
+                                    smooth={true}
+                                    offset={-90}
+                                    duration={1100}
+                                >
+                                    RESERVATIONS
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/newVenue" className="nav-link navbar-underline">COMPANY <span className="sr-only">(current)</span></Link>
+                                <Link 
+                                    to="companyTag" 
+                                    className="nav-link navbar-underline"
+                                    smooth={true}
+                                    offset={-90}
+                                    duration={1100}
+                                >
+                                    COMPANY 
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/newVenue" className="nav-link navbar-underline">CAREERS</Link>
+                                <Link 
+                                    to="careerTag" 
+                                    className="nav-link navbar-underline"
+                                    smooth={true}
+                                    offset={-90}
+                                    duration={1100}
+                                >
+                                    CAREERS
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/newVenue" className="nav-link navbar-underline">CONTACT</Link>
+                                <Link 
+                                    to="contactTag" 
+                                    className="nav-link navbar-underline"
+                                    smooth={true}
+                                    offset={-90}
+                                    duration={1100}
+                                >
+                                    CONTACT
+                                </Link>
                             </li>
                         </ul>
                     </div>

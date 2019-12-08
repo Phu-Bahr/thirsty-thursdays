@@ -8,7 +8,7 @@ class ReservationContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div id="reservationTag">
                 <div className="parallaxReservation">
                     <div className="row h-100">
                         <div className="col-md-12 align-self-center">
