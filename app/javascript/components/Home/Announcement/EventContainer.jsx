@@ -8,7 +8,6 @@ class EventContainer extends Component {
         super(props)
         this.state = {
             hideDiv: true,
-            hideUpdate: true,
             title: "",
             location: "",
             date: "",

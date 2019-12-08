@@ -19,10 +19,8 @@ const VenueTile = props => {
           <button type="button" className="btn btn-info" onClick= {props.clickHideUpdate}>
             Edit
           </button>
-          <button type="button" className="btn btn-secondary" onClick={props.handleClick}>
-            Delete Venue
-          </button>
         </div>
+        
         <EditVenue 
             key={props.id}
             id={props.id}
@@ -35,6 +33,7 @@ const VenueTile = props => {
             url={props.url}
             venueImage={props.venueImage}
             hideUpdate={props.hideUpdate}
+            handleClick={props.handleClick}
         />
       </div>
     </div>

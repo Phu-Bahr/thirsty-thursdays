@@ -236,15 +236,15 @@ class JumbotronContainer extends Component {
                   <div>
                     {jumoblist}
                   </div>
-                  <div className="col-sm-12 mt-5">
+                  <div className="col-sm-12 my-4">
                     <button type="button" className="btn btn-info" onClick={this.clickEdit}>Edit</button>
                   </div>
                 
-                  <div className={"container mt-5" + " " + hide}>
+                  <div className={"container" + " " + hide}>
                     <div className="row">
                       <div className="col-sm-12 col-lg-6 offset-lg-3">
 
-                        <p className="font-weight-normal mb-5">
+                        <p className="font-weight-normal mb-3">
                           Update your info here...
                         </p>
 

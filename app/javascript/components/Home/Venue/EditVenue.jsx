@@ -63,113 +63,115 @@ class EditVenue extends Component {
         
         return (
             <div className={"py-4" + " " + this.props.hideUpdate}>
-                <div className="row">
-                    <div className="col-sm-12 col-lg-6">
-                        <form onSubmit={this.onSubmit}>
-                            <div className="form-group">
-                                <label htmlFor="venueName">Venue name</label>
-                                <input 
-                                    type="text"
-                                    name="name"
-                                    id="venueName"
-                                    className="form-control"
-                                    required
-                                    onChange={this.onChange}
-                                    value={this.state.name}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="venueStreet">Street</label>
-                                <input 
-                                    type="text"
-                                    name="street"
-                                    id="venueStreet"
-                                    className="form-control"
-                                    required
-                                    onChange={this.onChange}
-                                    value={this.state.street}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="venueCity">City</label>
-                                <input 
-                                    type="text"
-                                    name="city"
-                                    id="venueCity"
-                                    className="form-control"
-                                    required
-                                    onChange={this.onChange}
-                                    value={this.state.city}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="venueState">State</label>
-                                <input 
-                                    type="text"
-                                    name="state"
-                                    id="venueState"
-                                    className="form-control"
-                                    required
-                                    onChange={this.onChange}
-                                    value={this.state.state}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="venueZip">Zip</label>
-                                <input 
-                                    type="text"
-                                    name="zip"
-                                    id="venueZip"
-                                    className="form-control"
-                                    required
-                                    onChange={this.onChange}
-                                    value={this.state.zip}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="venueTelephone">Telephone</label>
-                                <input 
-                                    type="tel"
-                                    name="telephone"
-                                    id="venueTelephone"
-                                    className="form-control"
-                                    required
-                                    onChange={this.onChange}
-                                    value={this.state.telephone}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="venueURL">Url</label>
-                                <input 
-                                    type="text"
-                                    name="url"
-                                    id="venueURL"
-                                    className="form-control"
-                                    required
-                                    onChange={this.onChange}
-                                    value={this.state.url}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="venueImage">Venue Image Link</label>
-                                <input 
-                                    type="text"
-                                    name="venue_image"
-                                    id="venueImage"
-                                    className="form-control"
-                                    required
-                                    onChange={this.onChange}
-                                    value={this.state.venue_image}
-                                />
-                            </div>
-
-                            <button type="submit" className="btn custom-button mt-3">
-                                Update Venue
-                            </button>
-
-                        </form>
+                <form onSubmit={this.onSubmit}>
+                    <div className="row">
+                        <div className="col-sm-6 pt-2">
+                            <label htmlFor="venueName">Venue name</label>
+                            <input 
+                                type="text"
+                                name="name"
+                                id="venueName"
+                                className="form-control"
+                                required
+                                onChange={this.onChange}
+                                value={this.state.name}
+                            />
+                        </div>
+                        <div className="col-sm-6 pt-2">
+                            <label htmlFor="venueStreet">Street</label>
+                            <input 
+                                type="text"
+                                name="street"
+                                id="venueStreet"
+                                className="form-control"
+                                required
+                                onChange={this.onChange}
+                                value={this.state.street}
+                            />
+                        </div>
+                        <div className="col-sm-6 pt-2">
+                            <label htmlFor="venueCity">City</label>
+                            <input 
+                                type="text"
+                                name="city"
+                                id="venueCity"
+                                className="form-control"
+                                required
+                                onChange={this.onChange}
+                                value={this.state.city}
+                            />
+                        </div>
+                        <div className="col-sm-6 pt-2">
+                            <label htmlFor="venueState">State</label>
+                            <input 
+                                type="text"
+                                name="state"
+                                id="venueState"
+                                className="form-control"
+                                required
+                                onChange={this.onChange}
+                                value={this.state.state}
+                            />
+                        </div>
+                        <div className="col-sm-6 pt-2">
+                            <label htmlFor="venueZip">Zip</label>
+                            <input 
+                                type="text"
+                                name="zip"
+                                id="venueZip"
+                                className="form-control"
+                                required
+                                onChange={this.onChange}
+                                value={this.state.zip}
+                            />
+                        </div>
+                        <div className="col-sm-6 pt-2">
+                            <label htmlFor="venueTelephone">Telephone</label>
+                            <input 
+                                type="tel"
+                                name="telephone"
+                                id="venueTelephone"
+                                className="form-control"
+                                required
+                                onChange={this.onChange}
+                                value={this.state.telephone}
+                            />
+                        </div>
+                        <div className="col-sm-6 pt-2">
+                            <label htmlFor="venueURL">Url</label>
+                            <input 
+                                type="text"
+                                name="url"
+                                id="venueURL"
+                                className="form-control"
+                                required
+                                onChange={this.onChange}
+                                value={this.state.url}
+                            />
+                        </div>
+                        <div className="col-sm-6 pt-2">
+                            <label htmlFor="venueImage">Venue Image Link</label>
+                            <input 
+                                type="text"
+                                name="venue_image"
+                                id="venueImage"
+                                className="form-control"
+                                required
+                                onChange={this.onChange}
+                                value={this.state.venue_image}
+                            />
+                        </div>
                     </div>
-                </div>
+
+                    <button type="submit" className="btn custom-button mt-3">
+                        Update Venue
+                    </button>
+
+                    <button type="button" className="btn btn-secondary mt-3" onClick={this.props.handleClick}>
+                        Delete Venue
+                    </button>
+                    
+                </form>
             </div>
         )
     }
