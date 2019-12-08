@@ -106,7 +106,7 @@ class VenueContainer extends Component {
     })
   
     return(
-      <div>
+      <div id="venueTag">
         <div className="parallaxVenue">
           <div className="row h-100">
               <div className="col-md-12 align-self-center">

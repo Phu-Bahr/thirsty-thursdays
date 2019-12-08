@@ -180,7 +180,7 @@ class FooterContainer extends Component {
         })
         
         return (
-            <div>
+            <div id="contactTag">
                 <div className="footerbackground py-5">
 
                     <div className="container">
