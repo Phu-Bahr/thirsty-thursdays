@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import VenueTile from './VenueTile'
-import { Link } from 'react-router-dom'
+import React, { Component } from "react";
+import VenueTile from "./VenueTile";
+import { Link } from "react-router-dom";
 
 class VenueContainer extends Component {
-  constructor(props){
-      super(props)
-      this.state = { 
-        venues: [],
-        selectedStepId: null
-      }
-      this.deleteVenue = this.deleteVenue.bind(this)
-      this.setSelectedStep = this.setSelectedStep.bind(this)
+  constructor(props) {
+    super(props);
+    this.state = {
+      venues: [],
+      selectedStepId: null
+    };
+    this.deleteVenue = this.deleteVenue.bind(this);
+    this.setSelectedStep = this.setSelectedStep.bind(this);
   }
 
   setSelectedStep(stepId) {
@@ -37,12 +37,12 @@ class VenueContainer extends Component {
         let newVenues = body;
         this.setState({ venues: newVenues });
       })
-      .catch(() => this.props.history.push("/"))
+      .catch(() => this.props.history.push("/"));
   }
 
   deleteVenue(id) {
-    const urls = `/api/v1/destroy/${id}`
-    const token = document.querySelector('meta[name="csrf-token"]').content
+    const urls = `/api/v1/destroy/${id}`;
+    const token = document.querySelector('meta[name="csrf-token"]').content;
     fetch(urls, {
       method: "DELETE",
       headers: {
@@ -50,42 +50,40 @@ class VenueContainer extends Component {
         "Content-Type": "application/json"
       }
     })
-    .then (response => {
-      if (response.ok) {
-        return response
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage)
-          throw error
-      }
-    })
-    .then(window.location.reload(false))
-    .catch(error => console.log(error.message))
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then(window.location.reload(false))
+      .catch(error => console.log(error.message));
   }
-    
-  render(){             
-    
-    const venueData = this.state.venues
-    let venueList = venueData.map(venue => {
 
-      let hideUpdate
+  render() {
+    const venueData = this.state.venues;
+    let venueList = venueData.map(venue => {
+      let hideUpdate;
       if (venue.id === this.state.selectedStepId) {
-          hideUpdate = ""
+        hideUpdate = "";
       } else {
-          hideUpdate = "invisible"
+        hideUpdate = "invisible";
       }
 
       let handleClick = () => {
-        let result = confirm("Are you sure?")
+        let result = confirm("Are you sure?");
         if (result) {
-          this.deleteVenue(venue.id)
+          this.deleteVenue(venue.id);
         }
-      }
+      };
 
       let clickHideUpdate = () => {
-        this.setSelectedStep(venue.id)
-      }
-  
+        this.setSelectedStep(venue.id);
+      };
+
       return (
         <VenueTile
           key={venue.id}
@@ -102,16 +100,16 @@ class VenueContainer extends Component {
           clickHideUpdate={clickHideUpdate}
           hideUpdate={hideUpdate}
         />
-      )
-    })
-  
-    return(
+      );
+    });
+
+    return (
       <div id="venueTag">
         <div className="parallaxVenue">
           <div className="row h-100">
-              <div className="col-md-12 align-self-center">
-                <h1 className="companyfont">Venues</h1>
-              </div>
+            <div className="col-md-12 align-self-center">
+              <h1 className="companyfont">Venues</h1>
+            </div>
           </div>
         </div>
 
@@ -119,18 +117,16 @@ class VenueContainer extends Component {
           <div className="col text-center">
             <Link to="/newVenue">
               <button type="button" className="btn-info mb-3">
-              Add new venue
+                Add new venue
               </button>
             </Link>
           </div>
 
-          <div className="row">
-            {venueList}
-          </div>
+          <div className="row">{venueList}</div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default VenueContainer
+export default VenueContainer;
