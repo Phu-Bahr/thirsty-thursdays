@@ -122,22 +122,24 @@ class AnnouncementContainer extends Component {
     });
 
     return (
-      <div>
+      <div id="announcementTag">
         <div className="container-fluid companycontent p-5">
-          <div className="text-center pb-5">
+          <div className="text-center">
             <div>
               <h1>Announcements</h1>
             </div>
             <div>
               <p>{announcementDescription}</p>
             </div>
-            <button
-              type="button"
-              className="btn btn-info"
-              onClick={this.clickEdit}
-            >
-              Edit Announcement/Image
-            </button>
+            <div className={this.props.hideEditButton}>
+              <button
+                type="button"
+                className="btn btn-info"
+                onClick={this.clickEdit}
+              >
+                Edit Announcement/Image
+              </button>
+            </div>
           </div>
           <div className={"container" + " " + hide}>
             <div className="row">
@@ -182,6 +184,7 @@ class AnnouncementContainer extends Component {
               <EventContainer
                 eventData={this.state.eventData}
                 refreshKey={this.state.refreshKey}
+                hideEditButton={this.props.hideEditButton}
               />
             </div>
           </div>

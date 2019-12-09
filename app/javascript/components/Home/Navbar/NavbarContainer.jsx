@@ -102,13 +102,13 @@ class NavbarContainer extends Component {
               </li>
               <li className="nav-item">
                 <Link
-                  to="careerTag"
+                  to="announcementTag"
                   className="nav-link navbar-underline"
                   smooth={true}
                   offset={-90}
                   duration={1100}
                 >
-                  CAREERS
+                  Events
                 </Link>
               </li>
               <li className="nav-item">

@@ -10,19 +10,40 @@ import AnnouncementContainer from "../Home/Announcement/AnnouncementContainer";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      toggleAdmin: false
+    };
+    this.adminMode = this.adminMode.bind(this);
+  }
+
+  adminMode(event) {
+    if (this.state.toggleAdmin) {
+      this.setState({ toggleAdmin: false });
+    } else {
+      this.setState({ toggleAdmin: true });
+    }
   }
 
   render() {
+    let hideEditButton;
+    if (this.state.toggleAdmin === false) {
+      hideEditButton = "invisible";
+    } else {
+      hideEditButton = "";
+    }
+
     return (
       <div className="master">
-        <NavbarContainer />
-        <JumbotronContainer />
-        <AnnouncementContainer />
-        <VenueContainer />
-        <ReservationContainer />
-        <CompanyContainer />
-        <FooterContainer />
+        <NavbarContainer hideEditButton={hideEditButton} />
+        <JumbotronContainer hideEditButton={hideEditButton} />
+        <AnnouncementContainer hideEditButton={hideEditButton} />
+        <VenueContainer hideEditButton={hideEditButton} />
+        <ReservationContainer hideEditButton={hideEditButton} />
+        <CompanyContainer hideEditButton={hideEditButton} />
+        <FooterContainer
+          adminMode={this.adminMode}
+          hideEditButton={hideEditButton}
+        />
       </div>
     );
   }

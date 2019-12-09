@@ -216,7 +216,11 @@ class FooterContainer extends Component {
             </div>
           </div>
 
-          <div className="col-sm-12 mt-5 text-center">
+          <div
+            className={
+              "col-sm-12 mt-5 text-center" + " " + this.props.hideEditButton
+            }
+          >
             <button
               type="button"
               className="btn btn-info"
@@ -363,6 +367,11 @@ class FooterContainer extends Component {
               </div>
             </div>
           </div>
+          <button
+            className="float-right btn"
+            style={{ height: 40, width: 40 }}
+            onClick={this.props.adminMode}
+          ></button>
         </div>
       </div>
     );

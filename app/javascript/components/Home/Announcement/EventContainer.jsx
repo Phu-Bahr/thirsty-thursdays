@@ -154,7 +154,7 @@ class EventContainer extends Component {
           <div>
             <h1>Events</h1>
           </div>
-          <div>
+          <div className={this.props.hideEditButton}>
             <button
               type="button"
               className="btn btn-info"
