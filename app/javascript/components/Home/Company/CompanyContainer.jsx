@@ -124,13 +124,15 @@ class CompanyContainer extends Component {
         <div>
           <section className="container-fluid companycontent py-5">
             <p> {companyDescription} </p>
-            <button
-              type="button"
-              className="btn btn-info"
-              onClick={this.clickEdit}
-            >
-              Edit
-            </button>
+            <div className={this.props.hideEditButton}>
+              <button
+                type="button"
+                className="btn btn-info"
+                onClick={this.clickEdit}
+              >
+                Edit
+              </button>
+            </div>
             <div className={"col-xs-12 col-sm-12 col-md-12" + " " + hide}>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group pt-3">

@@ -16,7 +16,7 @@ const VenueTile = props => {
         </div>
         <div>{props.telephone}</div>
         <div>{props.url}</div>
-        <div className="pt-2">
+        <div className={"pt-2" + " " + props.hideEditButton}>
           <button
             type="button"
             className="btn btn-info"

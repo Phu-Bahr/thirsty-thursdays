@@ -239,7 +239,9 @@ class JumbotronContainer extends Component {
                 />
               </div>
               <div>{jumoblist}</div>
-              <div className="col-sm-12 my-4">
+              <div
+                className={"col-sm-12 my-4" + " " + this.props.hideEditButton}
+              >
                 <button
                   type="button"
                   className="btn btn-info"

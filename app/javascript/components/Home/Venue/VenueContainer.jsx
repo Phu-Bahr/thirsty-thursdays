@@ -99,6 +99,7 @@ class VenueContainer extends Component {
           handleClick={handleClick}
           clickHideUpdate={clickHideUpdate}
           hideUpdate={hideUpdate}
+          hideEditButton={this.props.hideEditButton}
         />
       );
     });
@@ -114,7 +115,7 @@ class VenueContainer extends Component {
         </div>
 
         <div className="container">
-          <div className="col text-center">
+          <div className={"col text-center" + " " + this.props.hideEditButton}>
             <Link to="/newVenue">
               <button type="button" className="btn-info mb-3">
                 Add new venue
