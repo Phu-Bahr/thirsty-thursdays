@@ -11,7 +11,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggleAdmin: false
+      toggleAdmin: true
     };
     this.adminMode = this.adminMode.bind(this);
   }

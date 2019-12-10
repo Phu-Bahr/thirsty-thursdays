@@ -17,6 +17,15 @@ class AnnouncementContainer extends Component {
     this.clickEdit = this.clickEdit.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.toggleRefreshKey = this.toggleRefreshKey.bind(this);
+  }
+
+  toggleRefreshKey(event) {
+    if (this.state.refreshKey) {
+      this.setState({ refreshKey: false });
+    } else {
+      this.setState({ refreshKey: true });
+    }
   }
 
   clickEdit(event) {
@@ -84,21 +93,19 @@ class AnnouncementContainer extends Component {
 
   componentDidUpdate() {
     if (this.state.refreshKey === true) {
-      fetch("/api/v1/announcements")
-        .then(response1 => {
-          if (response1.ok) {
-            return response1;
-          } else {
-            let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage);
-            throw error;
-          }
+      Promise.all([fetch("/api/v1/announcements"), fetch("/api/v1/events")])
+        .then(([response1, response2]) => {
+          return Promise.all([response1.json(), response2.json()]);
         })
-        .then(response => response.json())
-        .then(body => {
-          this.setState({ announcementData: body });
+        .then(([response1, response2]) => {
+          this.setState({
+            announcementData: response1,
+            description: response1[0].description,
+            flier: response1[0].flier
+          });
+          this.setState({ eventData: response2 });
         })
-        .then(this.setState({ refreshKey: false }))
+        // need to add error messages
         .catch(error => console.log(error.message));
     }
   }
@@ -131,7 +138,7 @@ class AnnouncementContainer extends Component {
             <div>
               <p>{announcementDescription}</p>
             </div>
-            <div className={this.props.hideEditButton}>
+            <div className={"pb-4" + " " + this.props.hideEditButton}>
               <button
                 type="button"
                 className="btn btn-info"
@@ -185,6 +192,7 @@ class AnnouncementContainer extends Component {
                 eventData={this.state.eventData}
                 refreshKey={this.state.refreshKey}
                 hideEditButton={this.props.hideEditButton}
+                toggleRefreshKey={this.toggleRefreshKey}
               />
             </div>
           </div>
