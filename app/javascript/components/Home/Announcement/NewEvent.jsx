@@ -47,12 +47,16 @@ class NewEvent extends Component {
         }
         throw new Error("Network response was not ok.");
       })
-      .then(alert("Event has been added!"))
-      .then(window.location.reload(false))
+      // .then(alert("Event has been added!"))
+      // .then(window.location.reload(false))
+      .then(this.props.toggleRefreshKey())
+      .then(alert("Event has been added"))
       .catch(error => console.log(error.message));
   }
 
   render() {
+    console.log("from newEvent", this.props);
+
     return (
       <div>
         <div className="px-3">
