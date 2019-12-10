@@ -63,10 +63,11 @@ class EditVenue extends Component {
         }
         throw new Error("Network response was not ok.");
       })
+      .then(this.props.toggleRefreshKey)
       .then(alert("Event has been updated."))
-      .then(window.location.reload(false))
       .catch(error => console.log(error.message));
   }
+
   render() {
     return (
       <div className={"py-4" + " " + this.props.hideUpdate}>

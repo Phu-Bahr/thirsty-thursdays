@@ -39,6 +39,7 @@ const VenueTile = props => {
           venueImage={props.venueImage}
           hideUpdate={props.hideUpdate}
           handleClick={props.handleClick}
+          toggleRefreshKey={props.toggleRefreshKey}
         />
       </div>
     </div>

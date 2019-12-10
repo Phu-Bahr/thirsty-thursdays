@@ -7,10 +7,16 @@ class VenueContainer extends Component {
     super(props);
     this.state = {
       venues: [],
-      selectedStepId: null
+      selectedStepId: null,
+      refreshKey: false
     };
     this.deleteVenue = this.deleteVenue.bind(this);
     this.setSelectedStep = this.setSelectedStep.bind(this);
+    this.toggleRefreshKey = this.toggleRefreshKey.bind(this);
+  }
+
+  toggleRefreshKey(event) {
+    this.setState({ refreshKey: true });
   }
 
   setSelectedStep(stepId) {
@@ -40,6 +46,28 @@ class VenueContainer extends Component {
       .catch(() => this.props.history.push("/"));
   }
 
+  componentDidUpdate() {
+    if (this.state.refreshKey === true) {
+      fetch("/api/v1/venues/index")
+        .then(response => {
+          if (response.ok) {
+            return response;
+          } else {
+            let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+            throw error;
+          }
+        })
+        .then(response => response.json())
+        .then(body => {
+          let newVenues = body;
+          this.setState({ venues: newVenues });
+        })
+        .then(this.setState({ refreshKey: false }))
+        .catch(error => console.log(error.message));
+    }
+  }
+
   deleteVenue(id) {
     const urls = `/api/v1/destroy/${id}`;
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -59,7 +87,7 @@ class VenueContainer extends Component {
           throw error;
         }
       })
-      .then(window.location.reload(false))
+      .then(this.toggleRefreshKey)
       .catch(error => console.log(error.message));
   }
 
@@ -100,6 +128,7 @@ class VenueContainer extends Component {
           clickHideUpdate={clickHideUpdate}
           hideUpdate={hideUpdate}
           hideEditButton={this.props.hideEditButton}
+          toggleRefreshKey={this.toggleRefreshKey}
         />
       );
     });
