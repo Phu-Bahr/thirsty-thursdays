@@ -55,7 +55,7 @@ class EventContainer extends Component {
           throw error;
         }
       })
-      .then(this.props.toggleRefreshKey())
+      .then(this.props.toggleRefreshKey)
       .catch(error => console.log(error.message));
   }
 
@@ -89,8 +89,9 @@ class EventContainer extends Component {
           throw error;
         }
       })
+      .then(this.props.toggleRefreshKey)
       .then(alert("Event has been updated."))
-      .then(this.props.toggleRefreshKey())
+      .then(this.setState({ title: "", location: "", date: "" }))
       .catch(error => console.log(error.message));
   }
 

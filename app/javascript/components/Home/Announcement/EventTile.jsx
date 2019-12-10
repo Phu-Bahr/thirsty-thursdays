@@ -21,7 +21,12 @@ const EventTile = props => {
           Delete
         </button>
         <div className={"py-4" + " " + props.hideUpdate}>
-          <form onSubmit={props.submitUpdate}>
+          <form
+            onSubmit={event => {
+              props.submitUpdate(event);
+              event.target.reset();
+            }}
+          >
             <div className="row">
               <div className="col-sm-6">
                 <label>Title</label>

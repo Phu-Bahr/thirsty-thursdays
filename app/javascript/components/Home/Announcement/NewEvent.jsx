@@ -29,8 +29,6 @@ class NewEvent extends Component {
       date
     };
 
-    console.log("inside submit", body);
-
     const token = document.querySelector('meta[name="csrf-token"]').content;
 
     fetch(urls, {
@@ -47,9 +45,7 @@ class NewEvent extends Component {
         }
         throw new Error("Network response was not ok.");
       })
-      // .then(alert("Event has been added!"))
-      // .then(window.location.reload(false))
-      .then(this.props.toggleRefreshKey())
+      .then(this.props.toggleRefreshKey)
       .then(alert("Event has been added"))
       .catch(error => console.log(error.message));
   }
