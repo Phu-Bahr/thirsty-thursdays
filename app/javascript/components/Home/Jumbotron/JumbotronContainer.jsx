@@ -114,6 +114,11 @@ class JumbotronContainer extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.clickEdit = this.clickEdit.bind(this);
+    this.toggleRefreshKey = this.toggleRefreshKey.bind(this);
+  }
+
+  toggleRefreshKey(event) {
+    this.setState({ refreshKey: true });
   }
 
   clickEdit(event) {
@@ -126,25 +131,6 @@ class JumbotronContainer extends Component {
 
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-  }
-
-  componentDidMount() {
-    fetch("/api/v1/jumbotrons")
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statuseText})`,
-            error = new Error(errorMessage);
-          throw error;
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        let newJumboData = body;
-        this.setState({ jumboData: newJumboData });
-      })
-      .catch(error => console.log(error.message));
   }
 
   onSubmit(event) {
@@ -177,7 +163,26 @@ class JumbotronContainer extends Component {
           throw error;
         }
       })
-      .then(this.setState({ refreshKey: true }))
+      .then(this.toggleRefreshKey)
+      .catch(error => console.log(error.message));
+  }
+
+  componentDidMount() {
+    fetch("/api/v1/jumbotrons")
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statuseText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        let newJumboData = body;
+        this.setState({ jumboData: newJumboData });
+      })
       .catch(error => console.log(error.message));
   }
 
@@ -198,7 +203,8 @@ class JumbotronContainer extends Component {
           let newJumbo = body;
           this.setState({ jumboData: newJumbo });
         })
-        .then(this.setState({ refreshKey: false }));
+        .then(this.setState({ refreshKey: false }))
+        .catch(error => console.log(error.message));
     }
   }
 

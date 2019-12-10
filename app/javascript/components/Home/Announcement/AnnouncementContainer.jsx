@@ -21,11 +21,7 @@ class AnnouncementContainer extends Component {
   }
 
   toggleRefreshKey(event) {
-    if (this.state.refreshKey) {
-      this.setState({ refreshKey: false });
-    } else {
-      this.setState({ refreshKey: true });
-    }
+    this.setState({ refreshKey: true });
   }
 
   clickEdit(event) {
@@ -70,7 +66,7 @@ class AnnouncementContainer extends Component {
           throw error;
         }
       })
-      .then(this.setState({ refreshKey: true }))
+      .then(this.toggleRefreshKey)
       .catch(error => console.log(error.message));
   }
 
@@ -106,6 +102,7 @@ class AnnouncementContainer extends Component {
           this.setState({ eventData: response2 });
         })
         // need to add error messages
+        .then(this.setState({ refreshKey: false }))
         .catch(error => console.log(error.message));
     }
   }
