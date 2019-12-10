@@ -13,6 +13,11 @@ class CompanyContainer extends Component {
     this.clickEdit = this.clickEdit.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.toggleRefreshKey = this.toggleRefreshKey.bind(this);
+  }
+
+  toggleRefreshKey(event) {
+    this.setState({ refreshKey: true });
   }
 
   clickEdit(event) {
@@ -55,7 +60,7 @@ class CompanyContainer extends Component {
           throw error;
         }
       })
-      .then(this.setState({ refreshKey: true }))
+      .then(this.toggleRefreshKey)
       .catch(error => console.log(error.message));
   }
 
@@ -75,6 +80,7 @@ class CompanyContainer extends Component {
         let newCompanyData = body;
         this.setState({ companyData: newCompanyData });
       })
+      .then(this.setState({ refreshKey: false }))
       .catch(error => console.log(error.message));
   }
 

@@ -20,12 +20,18 @@ class FooterContainer extends Component {
       facebook: "",
       twitter: "",
       instagram: "",
-      other: ""
+      other: "",
+      refreshKey: false
     };
 
     this.clickEdit = this.clickEdit.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.toggleRefreshKey = this.toggleRefreshKey.bind(this);
+  }
+
+  toggleRefreshKey(event) {
+    this.setState({ refreshKey: true });
   }
 
   clickEdit(event) {
@@ -90,7 +96,7 @@ class FooterContainer extends Component {
           throw error;
         }
       })
-      .then(this.setState({ refreshKey: true }))
+      .then(this.toggleRefreshKey)
       .catch(error => console.log(error.message));
   }
 
@@ -233,7 +239,12 @@ class FooterContainer extends Component {
           <div className={"container" + " " + hide}>
             <div className="row">
               <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
-                <form onSubmit={this.onSubmit}>
+                <form
+                  onSubmit={event => {
+                    this.onSubmit(event);
+                    event.target.reset();
+                  }}
+                >
                   <div className="form-group">
                     <input
                       type="text"
@@ -271,7 +282,12 @@ class FooterContainer extends Component {
               </div>
 
               <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
-                <form onSubmit={this.onSubmit}>
+                <form
+                  onSubmit={event => {
+                    this.onSubmit(event);
+                    event.target.reset();
+                  }}
+                >
                   <div className="form-group">
                     <input
                       type="text"
@@ -319,7 +335,12 @@ class FooterContainer extends Component {
               </div>
 
               <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
-                <form onSubmit={this.onSubmit}>
+                <form
+                  onSubmit={event => {
+                    this.onSubmit(event);
+                    event.target.reset();
+                  }}
+                >
                   <div className="form-group">
                     <input
                       type="text"
