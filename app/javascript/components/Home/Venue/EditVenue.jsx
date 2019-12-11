@@ -64,7 +64,7 @@ class EditVenue extends Component {
         throw new Error("Network response was not ok.");
       })
       .then(this.props.toggleRefreshKey)
-      .then(alert("Event has been updated."))
+      .then(alert("Venue has been updated."))
       .catch(error => console.log(error.message));
   }
 
