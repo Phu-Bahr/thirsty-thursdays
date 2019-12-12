@@ -70,8 +70,6 @@ class Registration extends Component {
             onChange={this.handleChange}
             required
           />
-        </form>
-        <form onSubmit={this.handleRegSubmit}>
           <input
             type="password"
             name="password"
@@ -80,8 +78,6 @@ class Registration extends Component {
             onChange={this.handleChange}
             required
           />
-        </form>
-        <form onSubmit={this.handleRegSubmit}>
           <input
             type="password"
             name="password_confirmation"
