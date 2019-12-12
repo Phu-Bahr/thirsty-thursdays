@@ -34,6 +34,7 @@ class Home extends Component {
 
     return (
       <div className="master">
+        <h1>Status = {this.props.loggedInStatus}</h1>
         <NavbarContainer hideEditButton={hideEditButton} />
         <JumbotronContainer hideEditButton={hideEditButton} />
         <AnnouncementContainer hideEditButton={hideEditButton} />
