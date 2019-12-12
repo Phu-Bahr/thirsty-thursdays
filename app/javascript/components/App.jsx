@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../components/Home/Home";
 import NewVenue from "../components/Home/Venue/NewVenue";
 import Registration from "../components/Home/User/Registration";
+import Login from "../components/Home/User/Login";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 
@@ -39,6 +40,16 @@ class App extends Component {
               path="/registration"
               render={props => (
                 <Registration
+                  {...props}
+                  loggedInStatus={this.state.loggedInStatus}
+                  handleLogin={this.handleLogin}
+                />
+              )}
+            />
+            <Route
+              path="/login"
+              render={props => (
+                <Login
                   {...props}
                   loggedInStatus={this.state.loggedInStatus}
                   handleLogin={this.handleLogin}
