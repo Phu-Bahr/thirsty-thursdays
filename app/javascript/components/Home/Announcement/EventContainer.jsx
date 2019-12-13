@@ -149,26 +149,28 @@ class EventContainer extends Component {
 
     return (
       <div>
-        <div className="text-center pb-3">
-          <div>
+        <div className="pb-3">
+          <div className="text-center">
             <h1>Events</h1>
           </div>
-          <div className={this.props.hideEditButton}>
-            <button
-              type="button"
-              className="btn btn-info"
-              onClick={this.clickEventEdit}
-            >
-              Edit Events
-            </button>
-          </div>
-        </div>
 
-        <div className={"pt-4" + " " + hide}>
-          <NewEvent
-            refreshKey={this.props.refreshKey}
-            toggleRefreshKey={this.props.toggleRefreshKey}
-          />
+          <div className={this.props.hideEditButton}>
+            <div className="text-center">
+              <button
+                type="button"
+                className="btn btn-info"
+                onClick={this.clickEventEdit}
+              >
+                Edit Events
+              </button>
+            </div>
+            <div className={"pt-4" + " " + hide}>
+              <NewEvent
+                refreshKey={this.props.refreshKey}
+                toggleRefreshKey={this.props.toggleRefreshKey}
+              />
+            </div>
+          </div>
         </div>
 
         <div>{events}</div>

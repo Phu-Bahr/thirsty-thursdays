@@ -138,24 +138,25 @@ class CompanyContainer extends Component {
               >
                 Edit
               </button>
-            </div>
-            <div className={"col-xs-12 col-sm-12 col-md-12" + " " + hide}>
-              <form onSubmit={this.onSubmit}>
-                <div className="form-group pt-3">
-                  <textarea
-                    type="text"
-                    name="description"
-                    id="description"
-                    className="form-control"
-                    onChange={this.onChange}
-                    placeholder="Update Description Here..."
-                    rows="4"
-                  />
-                </div>
-                <button type="submit" className="btn custom-button">
-                  Update
-                </button>
-              </form>
+
+              <div className={"col-xs-12 col-sm-12 col-md-12" + " " + hide}>
+                <form onSubmit={this.onSubmit}>
+                  <div className="form-group pt-3">
+                    <textarea
+                      type="text"
+                      name="description"
+                      id="description"
+                      className="form-control"
+                      onChange={this.onChange}
+                      placeholder="Update Description Here..."
+                      rows="4"
+                    />
+                  </div>
+                  <button type="submit" className="btn custom-button">
+                    Update
+                  </button>
+                </form>
+              </div>
             </div>
           </section>
         </div>
