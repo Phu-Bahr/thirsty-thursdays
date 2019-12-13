@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  delete :logout, to: "sessions#logout"
-  get :logged_in, to: "sessions#logged_in"
+  delete :logout, to: "api/v1/sessions#logout"
+  get :logged_in, to: "api/v1/sessions#logged_in"
 
   
   namespace :api do
