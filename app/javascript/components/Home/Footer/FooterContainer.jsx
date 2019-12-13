@@ -389,11 +389,6 @@ class FooterContainer extends Component {
               </div>
             </div>
           </div>
-          <button
-            className="float-right btn"
-            style={{ height: 40, width: 40 }}
-            onClick={this.props.adminMode}
-          ></button>
           <Link
             to="/login"
             className="float-left btn"
