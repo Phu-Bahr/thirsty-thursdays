@@ -10,19 +10,8 @@ import AnnouncementContainer from "../Home/Announcement/AnnouncementContainer";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      toggleAdmin: true
-    };
-    this.adminMode = this.adminMode.bind(this);
+    this.state = {};
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
-  }
-
-  adminMode(event) {
-    if (this.state.toggleAdmin) {
-      this.setState({ toggleAdmin: false });
-    } else {
-      this.setState({ toggleAdmin: true });
-    }
   }
 
   handleLogoutClick() {
@@ -35,17 +24,20 @@ class Home extends Component {
       .then(response => {
         this.props.handleLogout();
       })
+      .then(window.location.reload(false))
       .catch(error => {
         console.log("logout error", error);
       });
   }
 
   render() {
+    console.log("Admin?", this.props.user.admin);
+
     let hideEditButton;
-    if (this.state.toggleAdmin === false) {
-      hideEditButton = "invisible";
-    } else {
+    if (this.props.user.admin === true) {
       hideEditButton = "";
+    } else {
+      hideEditButton = "invisible";
     }
 
     return (
@@ -63,10 +55,7 @@ class Home extends Component {
         <VenueContainer hideEditButton={hideEditButton} />
         <ReservationContainer hideEditButton={hideEditButton} />
         <CompanyContainer hideEditButton={hideEditButton} />
-        <FooterContainer
-          adminMode={this.adminMode}
-          hideEditButton={hideEditButton}
-        />
+        <FooterContainer hideEditButton={hideEditButton} />
       </div>
     );
   }

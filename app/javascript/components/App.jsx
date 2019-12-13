@@ -80,6 +80,7 @@ class App extends Component {
                   {...props}
                   loggedInStatus={this.state.loggedInStatus}
                   handleLogout={this.handleLogout}
+                  user={this.state.user}
                 />
               )}
             />
