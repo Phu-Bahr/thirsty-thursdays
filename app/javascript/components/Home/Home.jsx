@@ -24,7 +24,6 @@ class Home extends Component {
       .then(response => {
         this.props.handleLogout();
       })
-      .then(window.location.reload(false))
       .catch(error => {
         console.log("logout error", error);
       });
