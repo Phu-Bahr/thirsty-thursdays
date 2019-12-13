@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FooterEditOffice from "./FooterEditOffice";
 import FooterEditContactUs from "./FooterEditContactUs";
 import FooterEditSocial from "./FooterEditSocial";
+import { Link } from "react-router-dom";
 
 class FooterContainer extends Component {
   constructor(props) {
@@ -393,6 +394,12 @@ class FooterContainer extends Component {
             style={{ height: 40, width: 40 }}
             onClick={this.props.adminMode}
           ></button>
+          <Link
+            to="/login"
+            className="float-left btn"
+            style={{ height: 40, width: 40 }}
+            onClick={this.props.adminMode}
+          ></Link>
         </div>
       </div>
     );

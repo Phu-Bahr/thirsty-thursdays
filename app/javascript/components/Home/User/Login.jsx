@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -48,9 +48,13 @@ class Login extends Component {
       })
       .then(response => response.json())
       .then(data => {
-        if (data.logged_in) this.props.handleLogin(data);
+        console.log("from login data", data);
+
+        if (data.logged_in) {
+          this.props.handleLogin(data);
+        }
       })
-      .then(this.props.history.push("/"))
+      // .then(this.props.history.push("/"))
       .catch(error => {
         console.log("login error", error);
       });
@@ -80,6 +84,7 @@ class Login extends Component {
           />
           <button type="submit">Login</button>
         </form>
+        <Link to="/">Back to Home page</Link>
       </div>
     );
   }
