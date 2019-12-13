@@ -6,6 +6,7 @@ import FooterContainer from "../Home/Footer/FooterContainer";
 import CompanyContainer from "../Home/Company/CompanyContainer";
 import ReservationContainer from "../Home/Reservation/ReservationContainer";
 import AnnouncementContainer from "../Home/Announcement/AnnouncementContainer";
+import AdminBanner from "../Home/User/AdminBanner";
 
 class Home extends Component {
   constructor(props) {
@@ -41,13 +42,13 @@ class Home extends Component {
 
     return (
       <div className="master">
-        <div>
-          <h1>Status = {this.props.loggedInStatus}</h1>
-          <button className="btn btn-primary" onClick={this.handleLogoutClick}>
-            Logout
-          </button>
+        <div className={hideEditButton}>
+          <AdminBanner
+            hideEditButton={hideEditButton}
+            handleLogoutClick={this.handleLogoutClick}
+            loggedInStatus={this.props.loggedInStatus}
+          />
         </div>
-
         <NavbarContainer hideEditButton={hideEditButton} />
         <JumbotronContainer hideEditButton={hideEditButton} />
         <AnnouncementContainer hideEditButton={hideEditButton} />

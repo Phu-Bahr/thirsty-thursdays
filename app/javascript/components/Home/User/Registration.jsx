@@ -53,6 +53,7 @@ class Registration extends Component {
           this.props.handleLogin(data);
         }
       })
+      .then(alert("User created. Ask Admin to give you credentials."))
       .then(this.props.history.push("/"))
       .catch(error => {
         console.log("registration error", error);
