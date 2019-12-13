@@ -245,61 +245,64 @@ class JumbotronContainer extends Component {
                 />
               </div>
               <div>{jumoblist}</div>
-              <div
-                className={"col-sm-12 my-4" + " " + this.props.hideEditButton}
-              >
-                <button
-                  type="button"
-                  className="btn btn-info"
-                  onClick={this.clickEdit}
-                >
-                  Edit
-                </button>
-              </div>
+              <div className={this.props.hideEditButton}>
+                <div className="col-sm-12 my-4">
+                  <button
+                    type="button"
+                    className="btn btn-info"
+                    onClick={this.clickEdit}
+                  >
+                    Edit
+                  </button>
+                </div>
 
-              <div className={"container" + " " + hide}>
-                <div className="row">
-                  <div className="col-sm-12 col-lg-6 offset-lg-3">
-                    <p className="font-weight-normal mb-3">
-                      Update your info here...
-                    </p>
+                <div className={"container" + " " + hide}>
+                  <div className="row">
+                    <div className="col-sm-12 col-lg-6 offset-lg-3">
+                      <p className="font-weight-normal mb-3">
+                        Update your info here...
+                      </p>
 
-                    <form onSubmit={this.onSubmit}>
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          name="line1"
-                          id="line1"
-                          className="form-control"
-                          onChange={this.onChange}
-                          placeholder="line 1"
-                        />
-                      </div>
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          name="line2"
-                          id="line2"
-                          className="form-control"
-                          onChange={this.onChange}
-                          placeholder="line 2"
-                        />
-                      </div>
-                      <div className="form-group">
-                        <input
-                          type="textarea"
-                          name="line3"
-                          id="line3"
-                          className="form-control"
-                          onChange={this.onChange}
-                          placeholder="line 3"
-                        />
-                      </div>
+                      <form onSubmit={this.onSubmit}>
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            name="line1"
+                            id="line1"
+                            className="form-control"
+                            onChange={this.onChange}
+                            placeholder="line 1"
+                          />
+                        </div>
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            name="line2"
+                            id="line2"
+                            className="form-control"
+                            onChange={this.onChange}
+                            placeholder="line 2"
+                          />
+                        </div>
+                        <div className="form-group">
+                          <input
+                            type="textarea"
+                            name="line3"
+                            id="line3"
+                            className="form-control"
+                            onChange={this.onChange}
+                            placeholder="line 3"
+                          />
+                        </div>
 
-                      <button type="submit" className="btn custom-button mt-3">
-                        Update title data
-                      </button>
-                    </form>
+                        <button
+                          type="submit"
+                          className="btn custom-button mt-3"
+                        >
+                          Update title data
+                        </button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>

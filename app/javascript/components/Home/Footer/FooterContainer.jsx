@@ -223,169 +223,167 @@ class FooterContainer extends Component {
             </div>
           </div>
 
-          <div
-            className={
-              "col-sm-12 mt-5 text-center" + " " + this.props.hideEditButton
-            }
-          >
-            <button
-              type="button"
-              className="btn btn-info"
-              onClick={this.clickEdit}
-            >
-              Edit
-            </button>
-          </div>
+          <div className={this.props.hideEditButton}>
+            <div className="col-sm-12 mt-5 text-center">
+              <button
+                type="button"
+                className="btn btn-info"
+                onClick={this.clickEdit}
+              >
+                Edit
+              </button>
+            </div>
 
-          <div className={"container" + " " + hide}>
-            <div className="row">
-              <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
-                <form
-                  onSubmit={event => {
-                    this.onSubmit(event);
-                    event.target.reset();
-                  }}
-                >
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.name}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="street"
-                      id="street"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.street}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="citystate"
-                      id="citystate"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.citystate}
-                    />
-                  </div>
-                  <button type="submit" className="btn custom-button mt-n3">
-                    Edit Office
-                  </button>
-                </form>
-              </div>
+            <div className={"container" + " " + hide}>
+              <div className="row">
+                <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
+                  <form
+                    onSubmit={event => {
+                      this.onSubmit(event);
+                      event.target.reset();
+                    }}
+                  >
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.name}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="street"
+                        id="street"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.street}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="citystate"
+                        id="citystate"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.citystate}
+                      />
+                    </div>
+                    <button type="submit" className="btn custom-button mt-n3">
+                      Edit Office
+                    </button>
+                  </form>
+                </div>
 
-              <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
-                <form
-                  onSubmit={event => {
-                    this.onSubmit(event);
-                    event.target.reset();
-                  }}
-                >
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="contact1"
-                      id="contact1"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.contact1}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="contact2"
-                      id="contact2"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.contact2}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="contact3"
-                      id="contact3"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.contact3}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="contact4"
-                      id="contact4"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.contact4}
-                    />
-                  </div>
-                  <button type="submit" className="btn custom-button mt-n3">
-                    Edit Contact Info
-                  </button>
-                </form>
-              </div>
+                <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
+                  <form
+                    onSubmit={event => {
+                      this.onSubmit(event);
+                      event.target.reset();
+                    }}
+                  >
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="contact1"
+                        id="contact1"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.contact1}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="contact2"
+                        id="contact2"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.contact2}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="contact3"
+                        id="contact3"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.contact3}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="contact4"
+                        id="contact4"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.contact4}
+                      />
+                    </div>
+                    <button type="submit" className="btn custom-button mt-n3">
+                      Edit Contact Info
+                    </button>
+                  </form>
+                </div>
 
-              <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
-                <form
-                  onSubmit={event => {
-                    this.onSubmit(event);
-                    event.target.reset();
-                  }}
-                >
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="facebook"
-                      id="facebook"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.facebook}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="twitter"
-                      id="twitter"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.twitter}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="instagram"
-                      id="instagram"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.instagram}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      name="other"
-                      id="other"
-                      className="form-control"
-                      onChange={this.onChange}
-                      placeholder={this.state.other}
-                    />
-                  </div>
-                  <button type="submit" className="btn custom-button mt-n3">
-                    Edit Social
-                  </button>
-                </form>
+                <div className="col-xs-12 col-sm-4 col-md-4 mt-3">
+                  <form
+                    onSubmit={event => {
+                      this.onSubmit(event);
+                      event.target.reset();
+                    }}
+                  >
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="facebook"
+                        id="facebook"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.facebook}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="twitter"
+                        id="twitter"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.twitter}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="instagram"
+                        id="instagram"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.instagram}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="other"
+                        id="other"
+                        className="form-control"
+                        onChange={this.onChange}
+                        placeholder={this.state.other}
+                      />
+                    </div>
+                    <button type="submit" className="btn custom-button mt-n3">
+                      Edit Social
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>

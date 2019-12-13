@@ -24,23 +24,23 @@ const VenueTile = props => {
           >
             Edit
           </button>
-        </div>
 
-        <EditVenue
-          key={props.id}
-          id={props.id}
-          name={props.name}
-          street={props.street}
-          city={props.city}
-          state={props.state}
-          zip={props.zip}
-          telephone={props.telephone}
-          url={props.url}
-          venueImage={props.venueImage}
-          hideUpdate={props.hideUpdate}
-          handleClick={props.handleClick}
-          toggleRefreshKey={props.toggleRefreshKey}
-        />
+          <EditVenue
+            key={props.id}
+            id={props.id}
+            name={props.name}
+            street={props.street}
+            city={props.city}
+            state={props.state}
+            zip={props.zip}
+            telephone={props.telephone}
+            url={props.url}
+            venueImage={props.venueImage}
+            hideUpdate={props.hideUpdate}
+            handleClick={props.handleClick}
+            toggleRefreshKey={props.toggleRefreshKey}
+          />
+        </div>
       </div>
     </div>
   );
