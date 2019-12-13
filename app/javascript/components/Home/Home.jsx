@@ -14,6 +14,7 @@ class Home extends Component {
       toggleAdmin: true
     };
     this.adminMode = this.adminMode.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
   adminMode(event) {
@@ -22,6 +23,21 @@ class Home extends Component {
     } else {
       this.setState({ toggleAdmin: true });
     }
+  }
+
+  handleLogoutClick() {
+    const urls = "/logout";
+
+    fetch(urls, {
+      method: "DELETE",
+      credentials: "include"
+    })
+      .then(response => {
+        this.props.handleLogout();
+      })
+      .catch(error => {
+        console.log("logout error", error);
+      });
   }
 
   render() {
@@ -34,7 +50,13 @@ class Home extends Component {
 
     return (
       <div className="master">
-        <h1>Status = {this.props.loggedInStatus}</h1>
+        <div>
+          <h1>Status = {this.props.loggedInStatus}</h1>
+          <button className="btn btn-primary" onClick={this.handleLogoutClick}>
+            Logout
+          </button>
+        </div>
+
         <NavbarContainer hideEditButton={hideEditButton} />
         <JumbotronContainer hideEditButton={hideEditButton} />
         <AnnouncementContainer hideEditButton={hideEditButton} />

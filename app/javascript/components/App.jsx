@@ -17,22 +17,42 @@ class App extends Component {
       user: {}
     };
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLogin(data) {
     this.setState({ loggedInStatus: "LOGGED_IN", user: data.user });
   }
 
+  handleLogout() {
+    this.setState({ loggedInStatus: "NOT_LOGGED_IN", user: {} });
+    console.log("logoutclicked!");
+  }
+
   checkLoginStatus() {
     const urls = "/logged_in";
 
     fetch(urls, { credentials: "include" })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
       .then(response => response.json())
       .then(data => {
-        if (data.logged_in && (this.state.loggedInStatus = "NOT_LOGGED_IN")) {
+        console.log("log in? =>>", data);
+
+        if (
+          data.logged_in === true &&
+          (this.state.loggedInStatus = "NOT_LOGGED_IN")
+        ) {
           this.setState({ loggedInStatus: "LOGGED_IN", user: data.user });
         } else if (
-          !data.logged_in &&
+          data.logged_in === false &&
           (this.state.loggedInStatus = "LOGGED_IN")
         ) {
           this.setState({ loggedInStatus: "NOT_LOGGED_IN", user: {} });
@@ -56,7 +76,11 @@ class App extends Component {
               exact
               path="/"
               render={props => (
-                <Home {...props} loggedInStatus={this.state.loggedInStatus} />
+                <Home
+                  {...props}
+                  loggedInStatus={this.state.loggedInStatus}
+                  handleLogout={this.handleLogout}
+                />
               )}
             />
             <Route path="/newVenue" component={NewVenue} />

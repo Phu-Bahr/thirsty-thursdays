@@ -51,8 +51,6 @@ class NewEvent extends Component {
   }
 
   render() {
-    console.log("from newEvent", this.props);
-
     return (
       <div>
         <div className="px-3">
