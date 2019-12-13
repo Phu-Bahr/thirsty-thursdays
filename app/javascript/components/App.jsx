@@ -23,6 +23,30 @@ class App extends Component {
     this.setState({ loggedInStatus: "LOGGED_IN", user: data.user });
   }
 
+  checkLoginStatus() {
+    const urls = "/logged_in";
+
+    fetch(urls, { credentials: "include" })
+      .then(response => response.json())
+      .then(data => {
+        if (data.logged_in && (this.state.loggedInStatus = "NOT_LOGGED_IN")) {
+          this.setState({ loggedInStatus: "LOGGED_IN", user: data.user });
+        } else if (
+          !data.logged_in &&
+          (this.state.loggedInStatus = "LOGGED_IN")
+        ) {
+          this.setState({ loggedInStatus: "NOT_LOGGED_IN", user: {} });
+        }
+      })
+      .catch(error => {
+        console.log("check login error", error);
+      });
+  }
+
+  componentDidMount() {
+    this.checkLoginStatus();
+  }
+
   render() {
     return (
       <div>
