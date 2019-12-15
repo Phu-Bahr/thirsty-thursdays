@@ -17,18 +17,31 @@
 //  @import url('https://fonts.googleapis.com/css?family=Lato:300,700|Prata"');
 
 body {
-  background: linear-gradient(to right,rgb(1, 66, 79), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(1, 66, 79));
+  background: linear-gradient(
+    to right,
+    rgb(1, 66, 79),
+    rgb(255, 255, 255),
+    rgb(255, 255, 255),
+    rgb(255, 255, 255),
+    rgb(255, 255, 255),
+    rgb(1, 66, 79)
+  );
 }
 
 .master {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 300;
-  font-family: ambria, Cochin, Georgia, Times, 'Times New Roman', serif;
- }
- 
- h1, h2, h3, h4, h5, h6 {
-  font-family: 'Prata', serif;
- }
+  font-family: ambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Prata", serif;
+}
 
 .glow-border {
   box-shadow: 0px 0px 30px 10px #565050;
@@ -37,7 +50,6 @@ body {
 .invisible {
   display: none;
 }
-
 
 // venue
 .venueImage {
@@ -48,16 +60,16 @@ body {
 }
 
 .border {
-    border: #565050
+  border: #565050;
 }
 
 .custom-button.btn {
   background-color: #293241;
-  color: #FFF;
+  color: #fff;
   border: none;
 }
 .custom-button.btn:hover {
-  color: #FFF !important;
+  color: #fff !important;
   border: none;
 }
 
@@ -77,17 +89,13 @@ body {
 
 .jumboBackground {
   background-color: black !important;
-}
-
-.hero {
-  width: 100vw;
-  height: 55vh;
+  height: 40vw;
 }
 
 .overlayParticle {
   height: 100%;
   width: 100%;
-  opacity: .8;
+  opacity: 0.8;
   z-index: 0;
 }
 
@@ -171,9 +179,9 @@ body {
   transform-origin: left top;
   transform: scale(1, 1);
 }
-// end of navbar 
+// end of navbar
 
-// footer 
+// footer
 
 .footerbackground {
   background: black;
@@ -182,9 +190,8 @@ body {
 
 .iconfont {
   font-size: 30px;
-  color:whitesmoke;
+  color: whitesmoke;
 }
-
 
 // social css
 
@@ -195,7 +202,7 @@ $white87: hsla(0, 0%, 100%, 0.87); //#fff
 $white60: hsla(0, 0%, 100%, 0.6); //#fff
 $white30: hsla(0, 0%, 100%, 0.3); //#fff
 $white15: hsla(0, 0%, 100%, 0.15); //#fff
-$white0: hsla(0, 0%, 100%, 0.0); //#fff
+$white0: hsla(0, 0%, 100%, 0); //#fff
 
 $dark-gray: hsla(0, 0%, 7%, 1); //#121212
 
@@ -212,60 +219,64 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
 
 // icon
 .c-magic-icon {
-	position: relative;
-	display: block;
-	text-decoration: none;
-	outline: none;
-	line-height: rem(45);
+  position: relative;
+  display: block;
+  text-decoration: none;
+  outline: none;
+  line-height: rem(45);
   display: inline-block;
- 	text-align: center;
-	margin: 0 rem(4);
-	
-	& * {
-		pointer-events: none;
-	}
+  text-align: center;
+  margin: 0 rem(4);
 
-	&:hover .c-magic-icon__curtain {
-  transform: translate(0, 100%);
-	}
-	
-	&:focus {
-   	.c-magic-icon__outline {
-			border: rem(1) solid $link;
-			color: $link;
-		}
-	}
-	
-	&:active .c-magic-icon__fill{
-		opacity: 40%;
-	}
-	 
+  & * {
+    pointer-events: none;
+  }
+
+  &:hover .c-magic-icon__curtain {
+    transform: translate(0, 100%);
+  }
+
+  &:focus {
+    .c-magic-icon__outline {
+      border: rem(1) solid $link;
+      color: $link;
+    }
+  }
+
+  &:active .c-magic-icon__fill {
+    opacity: 40%;
+  }
 }
-	
+
 // icons layers
 
 .c-magic-icon__fill {
- 	border-radius: 50%;
- 	color: $dark-gray;
-   display: inline-block;
-   width: rem(45);
-   height: rem(45);
+  border-radius: 50%;
+  color: $dark-gray;
+  display: inline-block;
+  width: rem(45);
+  height: rem(45);
 }
 
 .facebook {
-  background-color: #3B5998;
+  background-color: #3b5998;
 }
 
 .twitter {
-	background-color: #1CA1F2;
+  background-color: #1ca1f2;
 }
 
 .instagram {
-  background: linear-gradient(216deg, rgba(64,93,230,1) 0%, rgba(225,48,108,1) 54%, rgba(255,220,128,1) 100%);
+  background: linear-gradient(
+    216deg,
+    rgba(64, 93, 230, 1) 0%,
+    rgba(225, 48, 108, 1) 54%,
+    rgba(255, 220, 128, 1) 100%
+  );
 }
 
 .other {
-	background-color: blue;
+  background-color: blue;
 }
 
 .c-magic-icon__fill {
@@ -273,24 +284,24 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
 }
 
 .c-magic-icon__curtain {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	background-color: black;
-	transform: translate(0, 0%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  transform: translate(0, 0%);
   transition: transform 0.18s ease-out;
 }
 
 .c-magic-icon__outline {
-	border-radius: 50%;
-	color: black;
-	position: absolute;
-	top: 0;
-	left: 0;
- 	width: rem(45);
- 	height: rem(45);
+  border-radius: 50%;
+  color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: rem(45);
+  height: rem(45);
 }
 
 // end of social css
@@ -339,3 +350,15 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
 }
 
 // end of reservation
+
+// login
+
+.login-background {
+  // height: 800px;
+  // width: 100%;
+  // background: url("https://images.pexels.com/photos/2506923/pexels-photo-2506923.jpeg?cs=srgb&dl=people-walking-on-the-street-2506923.jpg&fm=jpg");
+  // background-size: cover;
+  // // background-attachment: fixed;
+}
+
+// end of login

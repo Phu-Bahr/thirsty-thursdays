@@ -62,30 +62,53 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container text-center">
-          <h1>Status : {this.props.loggedInStatus}</h1>
-          <form onSubmit={this.handleLoginSubmit}>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.handleChange}
-              required
-            />
+      <div style={{ height: 1 }}>
+        <div
+          className="container text-center login-background"
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "40%",
+            transform: "translate(-50%, -50%)"
+          }}
+        >
+          <div className="row ">
+            <div className="col-sm-12 col-lg-6 offset-lg-3">
+              <h1>Status : {this.props.loggedInStatus}</h1>
+              <h3>Log in here</h3>
+              <form onSubmit={this.handleLoginSubmit}>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    required
+                  />
+                </div>
 
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.handleChange}
-              required
-            />
-            <button type="submit">Login</button>
-          </form>
-          <Link to="/">Back to Home page</Link>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.handleChange}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <button type="submit">Login</button>
+                </div>
+              </form>
+
+              <div>
+                <Link to="/">Back to Home page</Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
