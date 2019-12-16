@@ -13,7 +13,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      loggedInStatus: "NOT_LOGGED_IN",
+      loggedInStatus: "Not Logged In",
       user: {}
     };
     this.handleLogin = this.handleLogin.bind(this);
@@ -21,11 +21,14 @@ class App extends Component {
   }
 
   handleLogin(data) {
-    this.setState({ loggedInStatus: "LOGGED_IN", user: data.user });
+    this.setState({
+      loggedInStatus: 'Logged In, click on "Back to Home page"',
+      user: data.user
+    });
   }
 
   handleLogout() {
-    this.setState({ loggedInStatus: "NOT_LOGGED_IN", user: {} });
+    this.setState({ loggedInStatus: "Not Logged In", user: {} });
     console.log("logoutclicked!");
   }
 
@@ -48,14 +51,18 @@ class App extends Component {
 
         if (
           data.logged_in === true &&
-          (this.state.loggedInStatus = "NOT_LOGGED_IN")
+          (this.state.loggedInStatus = "Not Logged In")
         ) {
-          this.setState({ loggedInStatus: "LOGGED_IN", user: data.user });
+          this.setState({
+            loggedInStatus: 'Logged In, click on "Back to Home page"',
+            user: data.user
+          });
         } else if (
           data.logged_in === false &&
-          (this.state.loggedInStatus = "LOGGED_IN")
+          (this.state.loggedInStatus =
+            'Logged In, click on "Back to Home page"')
         ) {
-          this.setState({ loggedInStatus: "NOT_LOGGED_IN", user: {} });
+          this.setState({ loggedInStatus: "Not Logged In", user: {} });
         }
       })
       .catch(error => {

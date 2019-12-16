@@ -72,11 +72,11 @@ class Login extends Component {
             transform: "translate(-50%, -50%)"
           }}
         >
-          <div className="row ">
+          <div className="">
             <div className="col-sm-12 col-lg-6 offset-lg-3">
               <h1>Status : {this.props.loggedInStatus}</h1>
-              <h3>Log in here</h3>
-              <form onSubmit={this.handleLoginSubmit}>
+              <h3 className="p-4">Log in here</h3>
+              <form onSubmit={this.handleLoginSubmit} className="p-4">
                 <div className="form-group">
                   <input
                     type="email"
@@ -84,6 +84,7 @@ class Login extends Component {
                     placeholder="Email"
                     value={this.state.email}
                     onChange={this.handleChange}
+                    className="form-control"
                     required
                   />
                 </div>
@@ -95,6 +96,7 @@ class Login extends Component {
                     placeholder="Password"
                     value={this.state.password}
                     onChange={this.handleChange}
+                    className="form-control"
                     required
                   />
                 </div>
