@@ -22,7 +22,7 @@ class App extends Component {
 
   handleLogin(data) {
     this.setState({
-      loggedInStatus: 'Logged In, click on "Back to Home page"',
+      loggedInStatus: "Logged In",
       user: data.user
     });
   }
@@ -54,13 +54,12 @@ class App extends Component {
           (this.state.loggedInStatus = "Not Logged In")
         ) {
           this.setState({
-            loggedInStatus: 'Logged In, click on "Back to Home page"',
+            loggedInStatus: "Logged In",
             user: data.user
           });
         } else if (
           data.logged_in === false &&
-          (this.state.loggedInStatus =
-            'Logged In, click on "Back to Home page"')
+          (this.state.loggedInStatus = "Logged In")
         ) {
           this.setState({ loggedInStatus: "Not Logged In", user: {} });
         }
@@ -108,7 +107,9 @@ class App extends Component {
                 <Login
                   {...props}
                   loggedInStatus={this.state.loggedInStatus}
+                  user={this.state.user}
                   handleLogin={this.handleLogin}
+                  handleLogout={this.handleLogout}
                 />
               )}
             />
