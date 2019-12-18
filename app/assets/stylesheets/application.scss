@@ -16,6 +16,13 @@
 
 //  @import url('https://fonts.googleapis.com/css?family=Lato:300,700|Prata"');
 
+html,
+body,
+#app,
+#app > div {
+  width: 100%;
+}
+
 body {
   background: linear-gradient(
     to right,
@@ -81,6 +88,23 @@ h6 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 // end of venue
