@@ -10,10 +10,8 @@ class ReservationContainer extends Component {
     return (
       <div id="reservationTag">
         <div className="parallaxReservation">
-          <div className="row h-100">
-            <div className="col-md-12 align-self-center">
-              <h1 className="companyfont">Reservations</h1>
-            </div>
+          <div className="center">
+            <h1 className="companyfont">Reservations</h1>
           </div>
         </div>
         <section className="container-fluid companycontent py-5">

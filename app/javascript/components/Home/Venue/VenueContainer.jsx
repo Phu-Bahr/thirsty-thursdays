@@ -136,10 +136,8 @@ class VenueContainer extends Component {
     return (
       <div id="venueTag">
         <div className="parallaxVenue">
-          <div className="row h-100">
-            <div className="col-md-12 align-self-center">
-              <h1 className="companyfont">Venues</h1>
-            </div>
+          <div className="center">
+            <h1 className="companyfont">Venues</h1>
           </div>
         </div>
 
