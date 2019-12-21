@@ -67,3 +67,4 @@ gem 'httparty', '~> 0.13.7'
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'rack-cors', :require => 'rack/cors'
+gem "rack", ">= 2.0.8"
