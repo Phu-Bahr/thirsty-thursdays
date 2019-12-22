@@ -94,7 +94,7 @@ class Login extends Component {
             transform: "translate(-50%, -50%)"
           }}
         >
-          <div className="">
+          <div>
             <div className="col-sm-12 col-lg-6 offset-lg-3">
               <h1>Status: {this.props.loggedInStatus}</h1>
 

@@ -62,35 +62,56 @@ class Registration extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Status : {this.props.loggedInStatus}</h1>
-        <form onSubmit={this.handleRegSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password_confirmation"
-            placeholder="Password Confirmation"
-            value={this.state.password_confirmation}
-            onChange={this.handleChange}
-            required
-          />
-          <button type="submit">Register</button>
-        </form>
+      <div style={{ height: 1 }}>
+        <div
+          className="container text-center login-background"
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "40%",
+            transform: "translate(-50%, -50%)"
+          }}
+        >
+          <div className="col-sm-12 col-lg-6 offset-lg-3">
+            <h1>Status : {this.props.loggedInStatus}</h1>
+            <form onSubmit={this.handleRegSubmit}>
+              <div className="form-group">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  required
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  required
+                  className="form-control"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  name="password_confirmation"
+                  placeholder="Password Confirmation"
+                  value={this.state.password_confirmation}
+                  onChange={this.handleChange}
+                  required
+                  className="form-control"
+                />
+              </div>
+              <button type="submit">Register</button>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }
