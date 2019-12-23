@@ -1,9 +1,12 @@
 import React from "react";
+import moment from "moment";
 
 const EventTile = props => {
   return (
     <div>
-      - {props.title} - {props.location} @ {props.date}
+      <div>{props.location}</div>
+      <div>{props.title}</div>
+      <div> {moment(props.date).format("MMMM Do YYYY, h:mm:ss a")}</div>
       <br />
       <div className={"px-3" + " " + props.hide}>
         <button
