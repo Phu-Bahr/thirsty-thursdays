@@ -151,7 +151,7 @@ class EventContainer extends Component {
       <div>
         <div className="pb-3">
           <div className="text-center">
-            <h1>Events</h1>
+            <h1>Events coming up</h1>
           </div>
 
           <div className={this.props.hideEditButton}>
@@ -173,7 +173,7 @@ class EventContainer extends Component {
           </div>
         </div>
 
-        <div className="overflow-auto" style={{ height: "30vw" }}>
+        <div className="overflow-auto" style={{ height: "20vw" }}>
           {events}
         </div>
       </div>

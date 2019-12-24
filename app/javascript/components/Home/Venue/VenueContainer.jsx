@@ -141,7 +141,7 @@ class VenueContainer extends Component {
           </div>
         </div>
 
-        <div className="container">
+        <div className="container p-5">
           <div className={"col text-center" + " " + this.props.hideEditButton}>
             <Link to="/newVenue">
               <button type="button" className="btn-info mb-3">
