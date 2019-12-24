@@ -15,10 +15,12 @@ class ReservationContainer extends Component {
           </div>
         </div>
         <section className="container-fluid companycontent py-5">
-          <p>
-            Hello i can reserve a spot and put you on the waiting list if you
-            like!
-          </p>
+          <div className="container">
+            <p>
+              Looking to attend one of our hottest nights? Contact any of the
+              following in Contacts below or fill in our form (coming soon).
+            </p>
+          </div>
         </section>
       </div>
     );

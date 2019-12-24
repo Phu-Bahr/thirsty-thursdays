@@ -185,7 +185,7 @@ class AnnouncementContainer extends Component {
 
           <div className="row">
             <div className="col-sm-6 pb-5">
-              <div className="">
+              <div className="text-center">
                 <img className="img-fluid" src={announcementFlier}></img>
               </div>
             </div>

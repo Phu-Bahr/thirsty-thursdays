@@ -21,7 +21,7 @@ class NavbarContainer extends Component {
             role="navigation"
             onClick={this.scrollToTop}
           >
-            Club Promotion Inc
+            PlusONE
           </div>
 
           <button
