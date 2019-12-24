@@ -127,13 +127,17 @@ class AnnouncementContainer extends Component {
 
     return (
       <div id="announcementTag">
-        <div className="container-fluid companycontent p-5">
+        <div className="container-fluid companycontent pt-5">
           <div className="text-center">
             <div>
               <h1>Announcements</h1>
             </div>
-            <div>
-              <p>{announcementDescription}</p>
+            <div className="container pt-4 pb-5">
+              <div className="row">
+                <div className="col-md-10 offset-lg-1">
+                  <p>{announcementDescription}</p>
+                </div>
+              </div>
             </div>
             <div className={this.props.hideEditButton}>
               <div className="pb-4">
