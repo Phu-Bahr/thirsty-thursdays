@@ -173,7 +173,7 @@ class EventContainer extends Component {
           </div>
         </div>
 
-        <div className="overflow-auto" style={{ height: "20vw" }}>
+        <div className="overflow-auto" style={{ height: "25vw" }}>
           {events}
         </div>
       </div>

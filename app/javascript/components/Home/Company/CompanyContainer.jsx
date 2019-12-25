@@ -127,7 +127,9 @@ class CompanyContainer extends Component {
         </div>
         <div>
           <section className="container-fluid companycontent py-5">
-            <p> {companyDescription} </p>
+            <div className="container">
+              <p> {companyDescription} </p>
+            </div>
             <div className={this.props.hideEditButton}>
               <button
                 type="button"
