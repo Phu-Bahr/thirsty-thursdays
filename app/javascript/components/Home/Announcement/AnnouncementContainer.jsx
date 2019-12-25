@@ -132,7 +132,7 @@ class AnnouncementContainer extends Component {
             <div>
               <h1>Announcements</h1>
             </div>
-            <div className="container pt-4 pb-5">
+            <div className="container pt-4 pb-4">
               <div className="row">
                 <div className="col-md-10 offset-lg-1">
                   <p>{announcementDescription}</p>
@@ -149,35 +149,35 @@ class AnnouncementContainer extends Component {
                   Edit Announcement/Image
                 </button>
               </div>
-            </div>
-            <div className={"container" + " " + hide}>
-              <div className="row">
-                <div className="col-xs-12 col-sm-12 col-md-12 pb-5">
-                  <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="description"
-                        id="description"
-                        className="form-control"
-                        onChange={this.onChange}
-                        placeholder={this.state.description}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="flier"
-                        id="flier"
-                        className="form-control"
-                        onChange={this.onChange}
-                        placeholder={this.state.flier}
-                      />
-                    </div>
-                    <button type="submit" className="btn custom-button">
-                      Submit Change
-                    </button>
-                  </form>
+              <div className={"container" + " " + hide}>
+                <div className="row">
+                  <div className="col-xs-12 col-sm-12 col-md-12 pb-5">
+                    <form onSubmit={this.onSubmit}>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          name="description"
+                          id="description"
+                          className="form-control"
+                          onChange={this.onChange}
+                          placeholder={this.state.description}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          name="flier"
+                          id="flier"
+                          className="form-control"
+                          onChange={this.onChange}
+                          placeholder={this.state.flier}
+                        />
+                      </div>
+                      <button type="submit" className="btn custom-button">
+                        Submit Change
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
