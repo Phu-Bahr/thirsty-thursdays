@@ -2,11 +2,18 @@ import React from "react";
 import moment from "moment";
 
 const EventTile = props => {
+  function convert(input) {
+    return moment(input, "HH:mm:00").format("h:mm a");
+  }
+
   return (
     <div>
-      <div>{props.location}</div>
       <div>{props.title}</div>
-      <div> {moment(props.date).format("MMMM Do YYYY, h:mm:ss a")}</div>
+      <div>{props.location}</div>
+      <div>
+        {moment(props.date).format("MMMM Do YYYY")}, {convert(props.time)}
+      </div>
+
       <br />
       <div className={"px-3" + " " + props.hide}>
         <button
@@ -62,6 +69,17 @@ const EventTile = props => {
                   className="form-control"
                   onChange={props.onChange}
                   placeholder={props.date}
+                />
+              </div>
+              <div className="col-sm-12 col-lg-6">
+                <label>Time of Event</label>
+                <input
+                  type="time"
+                  name="time"
+                  id="time"
+                  className="form-control"
+                  onChange={props.onChange}
+                  placeholder={props.time}
                 />
               </div>
             </div>
