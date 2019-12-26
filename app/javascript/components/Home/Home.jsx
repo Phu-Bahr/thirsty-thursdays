@@ -38,7 +38,7 @@ class Home extends Component {
       hideEditButton = "";
     } else {
       // set below to blank string to default show edit buttons
-      hideEditButton = "";
+      hideEditButton = "invisible";
     }
 
     return (
