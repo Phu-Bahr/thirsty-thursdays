@@ -37,7 +37,8 @@ class Home extends Component {
     if (this.props.user.admin === true) {
       hideEditButton = "";
     } else {
-      hideEditButton = "invisible";
+      // set below to blank string to default show edit buttons
+      hideEditButton = "";
     }
 
     return (

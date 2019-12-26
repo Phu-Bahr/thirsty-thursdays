@@ -10,6 +10,7 @@ class EventContainer extends Component {
       title: "",
       location: "",
       date: "",
+      time: "",
       selectedStepId: null
     };
 
@@ -62,12 +63,13 @@ class EventContainer extends Component {
   updateEvent(id) {
     event.preventDefault();
     const urls = `/api/v1/events/${id}`;
-    const { title, location, date } = this.state;
+    const { title, location, date, time } = this.state;
 
     const body = {
       title,
       location,
-      date
+      date,
+      time
     };
 
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -91,7 +93,7 @@ class EventContainer extends Component {
       })
       .then(this.props.toggleRefreshKey)
       .then(alert("Event has been updated."))
-      .then(this.setState({ title: "", location: "", date: "" }))
+      .then(this.setState({ title: "", location: "", date: "", time: "" }))
       .catch(error => console.log(error.message));
   }
 
@@ -137,6 +139,7 @@ class EventContainer extends Component {
           title={element.title}
           location={element.location}
           date={element.date}
+          time={element.time}
           hide={hide}
           hideUpdate={hideUpdate}
           clickHideUpdate={clickHideUpdate}

@@ -40,8 +40,8 @@ announcement = Announcement.create!(
 )
 
 event = Event.create!([
-    { title: "Christmas time party", date: Date.parse('2019-12-25'), location: "Wonder Bar" },
-    { title: "Halloween time party", date: Date.parse('2019-10-31'), location: "The Grand" },
-    { title: "Thirsty Thursday", date: Date.parse('2019-12-25'), location: "Scorpian Bar" },
-    { title: "New years bash", date: Date.parse('2019-12-31'), location: "Big Night" }
+    { title: "Christmas time party", date: Date.parse('2019-12-25'), time: "10:00", location: "Wonder Bar" },
+    { title: "Halloween time party", date: Date.parse('2019-10-31'), time: "10:00", location: "The Grand" },
+    { title: "Thirsty Thursday", date: Date.parse('2019-12-25'), time: "10:00", location: "Scorpian Bar" },
+    { title: "New years bash", date: Date.parse('2019-12-31'), time: "10:00", location: "Big Night" }
 ])

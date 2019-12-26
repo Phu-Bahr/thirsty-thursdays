@@ -7,6 +7,7 @@ class NewEvent extends Component {
       title: "",
       location: "",
       date: "",
+      time: "",
       refreshKey: false
     };
 
@@ -21,12 +22,13 @@ class NewEvent extends Component {
   onSubmit(event) {
     event.preventDefault();
     const urls = "/api/v1/events";
-    const { title, location, date } = this.state;
+    const { title, location, date, time } = this.state;
 
     const body = {
       title,
       location,
-      date
+      date,
+      time
     };
 
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -89,7 +91,14 @@ class NewEvent extends Component {
               required
               onChange={this.onChange}
             />
-
+            <input
+              type="time"
+              name="time"
+              id="time"
+              className="form-control"
+              required
+              onChange={this.onChange}
+            />
             <button type="submit" className="btn custom-button">
               Create Event
             </button>
