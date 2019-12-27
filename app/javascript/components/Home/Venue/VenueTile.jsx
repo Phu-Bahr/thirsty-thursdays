@@ -2,22 +2,36 @@ import React from "react";
 import { Link } from "react-router-dom";
 import EditVenue from "./EditVenue";
 
+// {/* <div class="card mb-3">
+//   <img src="..." class="card-img-top" alt="...">
+//   <div class="card-body">
+//     <h5 class="card-title">Card title</h5>
+//     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+//     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+//   </div>
+// </div> */}
+
 const VenueTile = props => {
   return (
     <div className="col-md-6 col-middle p-3">
-      <div className="parent ">
-        <div className="child particles">
-          <img className="venueImage" src={props.venueImage} />
-          <div className="venueTitle">{props.name}</div>
+      <div className="card border-0">
+        <div className="parent m-0">
+          <div className="child particles">
+            <img className="venueImage card-img-top" src={props.venueImage} />
+            <div className="venueTitle">{props.name}</div>
+          </div>
+        </div>
+        <div className="card-body venueDetails">
+          <div>{props.name}</div>
+          <div>{props.street}</div>
+          <div>
+            {props.city}, {props.state} {props.zip}
+          </div>
+          <div>{props.telephone}</div>
+          <div>{props.url}</div>
         </div>
       </div>
       <div className="pt-3">
-        <div>{props.street}</div>
-        <div>
-          {props.city}, {props.state} {props.zip}
-        </div>
-        <div>{props.telephone}</div>
-        <div>{props.url}</div>
         <div className={"pt-2" + " " + props.hideEditButton}>
           <button
             type="button"
