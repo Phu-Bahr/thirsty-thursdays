@@ -221,7 +221,7 @@ class JumbotronContainer extends Component {
     }
 
     const jumboData = this.state.jumboData;
-    let jumoblist = jumboData.map(element => {
+    let jumboList = jumboData.map(element => {
       return (
         <JumboTile
           key={element.id}
@@ -244,7 +244,7 @@ class JumbotronContainer extends Component {
                   params={particleOpt}
                 />
               </div>
-              <div>{jumoblist}</div>
+              <div>{jumboList}</div>
               <div className={this.props.hideEditButton}>
                 <div className="col-sm-12 my-4">
                   <button

@@ -5,13 +5,13 @@ import EditVenue from "./EditVenue";
 const VenueTile = props => {
   return (
     <div className="col-md-6 col-middle p-3">
-      <div className="">
-        <div className="">
+      <div className="parent ">
+        <div className="child particles">
           <img className="venueImage" src={props.venueImage} />
+          <div className="venueTitle">{props.name}</div>
         </div>
       </div>
       <div className="pt-3">
-        <div>{props.name}</div>
         <div>{props.street}</div>
         <div>
           {props.city}, {props.state} {props.zip}
