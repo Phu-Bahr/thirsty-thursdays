@@ -2,9 +2,9 @@ import React from "react";
 import moment from "moment";
 
 const EventTile = props => {
-  function convert(input) {
+  let convert = input => {
     return moment(input, "HH:mm:00").format("h:mm a");
-  }
+  };
 
   return (
     <div>
