@@ -5,8 +5,10 @@ import EditVenue from "./EditVenue";
 const VenueTile = props => {
   return (
     <div className="col-md-6 col-middle p-3">
-      <div>
-        <img className="venueImage" src={props.venueImage} />
+      <div className="">
+        <div className="">
+          <img className="venueImage" src={props.venueImage} />
+        </div>
       </div>
       <div className="pt-3">
         <div>{props.name}</div>
