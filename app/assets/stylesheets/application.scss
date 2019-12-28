@@ -23,16 +23,8 @@ body,
   width: 100%;
 }
 
-body {
-  background: linear-gradient(
-    to right,
-    rgb(1, 66, 79),
-    rgb(255, 255, 255),
-    rgb(255, 255, 255),
-    rgb(255, 255, 255),
-    rgb(255, 255, 255),
-    rgb(1, 66, 79)
-  );
+.venueBackground {
+  background: white;
 }
 
 .master {
@@ -85,6 +77,19 @@ h6 {
 .venueDetails {
   background: black;
   color: whitesmoke;
+}
+
+.m-fadeOut {
+  height: 0.00000001px;
+  width: 0.00000001px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0ms, opacity 0.4s;
+}
+.m-fadeIn {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 0.4s;
 }
 
 .parent {

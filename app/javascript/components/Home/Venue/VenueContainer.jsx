@@ -96,9 +96,9 @@ class VenueContainer extends Component {
     let venueList = venueData.map(venue => {
       let hideUpdate;
       if (venue.id === this.state.selectedStepId) {
-        hideUpdate = "";
+        hideUpdate = "m-fadeIn";
       } else {
-        hideUpdate = "invisible";
+        hideUpdate = "m-fadeOut";
       }
 
       let handleClick = () => {
@@ -134,7 +134,7 @@ class VenueContainer extends Component {
     });
 
     return (
-      <div id="venueTag">
+      <div id="venueTag" className="venueBackground">
         <div className="parallaxVenue">
           <div className="center">
             <h1 className="companyfont">Venues</h1>

@@ -13,16 +13,18 @@ import EditVenue from "./EditVenue";
 
 const VenueTile = props => {
   return (
-    <div className="col-md-6 col-middle p-3">
+    <div className="col-md-6 col-middle px-3 py-2">
       <div className="card border-0">
         <div className="parent m-0">
           <div className="child particles">
             <img className="venueImage card-img-top" src={props.venueImage} />
-            <div className="venueTitle">{props.name}</div>
+            <div className="venueTitle" onClick={props.clickHideUpdate}>
+              {props.name}
+            </div>
           </div>
         </div>
-        <div className="card-body venueDetails">
-          <div>{props.name}</div>
+        <div className={"card-body venueDetails" + " " + props.hideUpdate}>
+          <div style={{ fontWeight: "900" }}>{props.name}</div>
           <div>{props.street}</div>
           <div>
             {props.city}, {props.state} {props.zip}
@@ -31,7 +33,7 @@ const VenueTile = props => {
           <div>{props.url}</div>
         </div>
       </div>
-      <div className="pt-3">
+      <div className="">
         <div className={"pt-2" + " " + props.hideEditButton}>
           <button
             type="button"
