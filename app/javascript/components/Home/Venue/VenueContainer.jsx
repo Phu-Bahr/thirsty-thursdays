@@ -97,9 +97,9 @@ class VenueContainer extends Component {
       let hideUpdate;
       if (venue.id === this.state.selectedStepId) {
         //using fadein and out will cause white space on footer.
-        hideUpdate = "m-fadeIn";
+        hideUpdate = "";
       } else {
-        hideUpdate = "m-fadeOut";
+        hideUpdate = "invisible";
       }
 
       let handleClick = () => {

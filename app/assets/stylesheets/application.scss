@@ -21,7 +21,7 @@ body,
 #app,
 #app > div {
   width: 100%;
-  background-color: black;
+  background-color: whitesmoke;
 }
 
 .venueBackground {
@@ -80,18 +80,18 @@ h6 {
   color: whitesmoke;
 }
 
-.m-fadeOut {
-  height: 0.00000001px;
-  width: 0.00000001px;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 0ms, opacity 0.4s;
-}
-.m-fadeIn {
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0s linear 0s, opacity 0.4s;
-}
+// .m-fadeOut {
+//   height: 0.00000001px;
+//   width: 0.00000001px;
+//   visibility: hidden;
+//   opacity: 0;
+//   transition: visibility 0s linear 0ms, opacity 0.4s;
+// }
+// .m-fadeIn {
+//   visibility: visible;
+//   opacity: 1;
+//   transition: visibility 0s linear 0s, opacity 0.4s;
+// }
 
 .parent {
   display: block;
