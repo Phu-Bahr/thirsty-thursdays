@@ -476,4 +476,11 @@ $link-light: hsla(192, 100, 49, 1); //#00C8FB
   box-shadow: 0px 0px 30px 10px #565050;
 }
 
+.event-border:hover {
+  -webkit-box-shadow: 0px 0px 30px 10px #565050;
+  -moz-box-shadow: 0px 0px 30px 10px #565050;
+  box-shadow: 0px 0px 30px 10px #565050;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
 // end of announcements
