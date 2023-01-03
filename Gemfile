@@ -63,7 +63,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'httparty', '~> 0.13.7'
+gem 'httparty', '~> 0.21.0'
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'rack-cors', :require => 'rack/cors'
